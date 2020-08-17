@@ -1,0 +1,11 @@
+# Fig. 24.48: app/controllers/scriptaculous_demo_controller.rb
+# Script.aculo.us Demo controller
+class ScriptaculousDemoController < ApplicationController 
+  def index
+     @currentEffect = 0
+  end
+  def playEffect
+     @currentEffect = params[ :effect_index ]
+     render :partial => "link"
+  end # method playEffect
+end # class ScriptaculousDemoController

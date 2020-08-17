@@ -1,0 +1,11 @@
+﻿<Canvas x:Name="parentCanvas"
+        xmlns="http://schemas.microsoft.com/client/2007" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Loaded="Page_Loaded" 
+        x:Class="InterestRateCalculator.Page;assembly=ClientBin/InterestRateCalculator.dll"
+        Width="300" Height="320" Background="White"
+        xmlns:goa="clr-namespace:NETiKA.Silverlight;assembly=ClientBin/Goa.Windows.Forms.dll" >
+   <goa:WinFormHost Width="300" Height="320"
+      Canvas.Left="0" Canvas.Top="0" 
+      FormClass="InterestRateCalculator.MyForm" />
+</Canvas>

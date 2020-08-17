@@ -1,0 +1,263 @@
+﻿<!-- Fig. 19.21: Page.xaml -->
+<!-- Deitel Cover Viewer in Silverlight 1.1 Alpha Refresh -->
+<Canvas
+   xmlns = "http://schemas.microsoft.com/client/2007" 
+   xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml" 
+   x:Name = "parentCanvas" Loaded = "Page_Loaded"
+   x:Class = "CoverViewer.Page;assembly=ClientBin/CoverViewer.dll"
+   Width = "640" Height = "480" Background = "Black">
+   <Canvas.Resources>
+      <Storyboard x:Name = "nextImageAnimation"
+            Completed = "nextImageSwitch">
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Width)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "149.64"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "265.302"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Height)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "196.652"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "348.652"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(Canvas.Top)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "142"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "64.79"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(Canvas.Left)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "482.36"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "186"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Width)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "265.302"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "149.64"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Height)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "348.652"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "196.652"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(Canvas.Left)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "186"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "8"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(Canvas.Top)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "64.79"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "142"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[3].(TranslateTransform.X)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "0"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "-82.18"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "0"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0.326"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "1"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "1"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0"/>
+         </DoubleAnimationUsingKeyFrames>
+      </Storyboard>
+      <Storyboard x:Name = "prevImageAnimation"
+         Completed = "prevImageSwitch">
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Width)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "149.64"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "149.64"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Height)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "196.652"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "196.652"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(Canvas.Left)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "482.36"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "482.36"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(Canvas.Top)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "142"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "149"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Width)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "265.302"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "149.64"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Height)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "348.652"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "196.652"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(Canvas.Left)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "186"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "482.36"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "currentImage"
+            Storyboard.TargetProperty = "(Canvas.Top)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "64.79"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "142"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[3].(TranslateTransform.X)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "0"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Width)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "149.64"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "265.302"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(FrameworkElement.Height)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "196.652"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "348.652"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(Canvas.Left)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "8"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "186"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "prevImage"
+            Storyboard.TargetProperty = "(Canvas.Top)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "142"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "64.79"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[3].(TranslateTransform.X)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "0"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "82.82"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+               Storyboard.TargetProperty = "(UIElement.RenderTransform).
+                  (TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "0"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0.326"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "1"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0"/>
+         </DoubleAnimationUsingKeyFrames>
+         <DoubleAnimationUsingKeyFrames BeginTime = "00:00:00"
+            Storyboard.TargetName = "nextImage"
+            Storyboard.TargetProperty = "(UIElement.RenderTransform).
+               (TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+            <SplineDoubleKeyFrame KeyTime = "00:00:00" Value = "1"/>
+            <SplineDoubleKeyFrame KeyTime = "00:00:00.5000000"
+               Value = "0"/>
+         </DoubleAnimationUsingKeyFrames>
+      </Storyboard>
+   </Canvas.Resources>
+
+   <TextBlock x:Name = "titleTextBlock" Canvas.Left = "199.994" 
+      Canvas.Top = "5" FontSize = "24" Width = "238.308" 
+      TextWrapping = "Wrap" Foreground = "#FFFFFFFF"
+      Text = "Deitel Cover Viewer" />
+   <TextBlock x:Name = "errorTextBlock" Canvas.Left = "0" 
+      Canvas.Top = "400" FontSize = "12" Width = "640"
+      TextWrapping = "Wrap" Foreground = "#FFFFFFFF" />
+   <Image x:Name = "prevImage" MouseLeftButtonDown = "prevImageHandler" 
+      Width = "149.64" Height = "196.652" Canvas.Left = "8" 
+      Canvas.Top = "142" RenderTransformOrigin = "0.5, 0.5" >
+      <Image.RenderTransform>
+         <TransformGroup>
+            <ScaleTransform ScaleX = "1" ScaleY = "1" />
+            <SkewTransform AngleX = "0" AngleY = "0" />
+            <RotateTransform Angle = "0" />
+            <TranslateTransform X = "0" Y = "0" />
+         </TransformGroup>
+      </Image.RenderTransform>
+   </Image>
+   <Image x:Name = "currentImage" Width = "265.302" Height = "348.652"
+      Canvas.Left = "186" Canvas.Top = "64.79" />
+   <Image x:Name = "nextImage" MouseLeftButtonDown = "nextImageHandler" 
+      Width = "149.64" Height = "196.652" Canvas.Left = "482.36"
+      Canvas.Top = "142" RenderTransformOrigin = "0.5, 0.5" >
+      <Image.RenderTransform>
+         <TransformGroup>
+            <ScaleTransform ScaleX = "1" ScaleY = "1" />
+            <SkewTransform AngleX = "0" AngleY = "0" />
+            <RotateTransform Angle = "0" />
+            <TranslateTransform X = "0" Y = "0" />
+         </TransformGroup>
+      </Image.RenderTransform>
+   </Image>
+</Canvas>

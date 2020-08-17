@@ -1,0 +1,35 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <DefaultClrNameSpace>UntitledProject10</DefaultClrNameSpace>
+    <AssemblyName>UntitledProject10</AssemblyName>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <AlwaysCompileMarkupFilesInSeparateDomain>false</AlwaysCompileMarkupFilesInSeparateDomain>
+    <ExpressionBlendCreationVersion>2.0.1075.0</ExpressionBlendCreationVersion>
+    <OutputType>Library</OutputType>
+    <RootNamespace>UntitledProject10</RootNamespace>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartPageUrl>Default.html</StartPageUrl>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="bailey.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Default.html" />
+    <Content Include="Default_html.js">
+      <DependentUpon>Default.html</DependentUpon>
+    </Content>
+    <Content Include="Page.xaml.js">
+      <DependentUpon>Page.xaml</DependentUpon>
+    </Content>
+    <Content Include="Silverlight.js" />
+    <Page Include="Page.xaml" />
+    <Resource Include="apollo15LaunchThumb.jpg" />
+    <Resource Include="baileyThumb.jpg" />
+    <Resource Include="F35Thumb.jpg" />
+    <Resource Include="featherAndHammerThumb.jpg" />
+  </ItemGroup>
+</Project>

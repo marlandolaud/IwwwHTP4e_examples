@@ -1,0 +1,9 @@
+<!-- Fig. 24.55: app/views/flickr/_thumbs.rhtml -->
+<!-- thumbs view of Flickr Photo Viewer -->
+<%= link_to_remote image_tag( thumbs.sizes[ 0 ][ 'source' ],
+      :class => "image" ),
+   :url => { :action => 'fullsizeImage', 
+      :imageURL => thumbs.sizes[ 3 ][ 'source' ] },
+   :update => "fullsizeImage",
+   :success => visual_effect( :grow, 'fullsizeImage',
+      :queue => 'last' ) %>

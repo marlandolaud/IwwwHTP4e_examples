@@ -1,0 +1,9 @@
+<!-- Fig. 24.34 app/views/forums/new.rhtml --> 
+<!-- Template for a new action that adds a forum to the forums table. --> 
+<h1>New forum</h1>
+<% form_tag :action => 'create' %>
+   <%= render :partial => 'form' %>
+   <%= submit_tag "Create" %>
+<% end %>
+
+<%= link_to 'Back', :action => 'list' %>

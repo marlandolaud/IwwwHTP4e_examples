@@ -1,0 +1,233 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<!-- Fig. 18.14: weather.mxml -->
+<!-- Weather Forecast application in Flex 2 -->
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml" 
+   layout = "absolute" xmlns:yahoo = "com.yahoo.webapis.maps.*"
+   creationComplete = "initMap();" >
+
+   <mx:Script source = "map.as" />
+
+   <mx:Script>
+   <![CDATA[
+      import mx.controls.dataGridClasses.DataGridColumn;
+      import mx.rpc.events.ResultEvent;
+      import mx.managers.CursorManager; 
+      import mx.controls.Alert;
+      import mx.collections.ArrayCollection;
+      import flash.events.MouseEvent;
+
+      // define default namespace
+      default xml namespace = "http://www.webservicex.net";
+
+      [Bindable] 
+      private var xmlData : XML;
+      [Bindable] 
+      private var highLowTemp : String;
+      [Bindable] 
+      private var fiveDayForecast : String = "";
+      [Bindable] 
+      private var placeName : String;
+
+      // handle getWeatherButton click action
+      private function getWeather() : void
+      {
+         // disable button while request is pending
+         getWeatherButton.enabled = false;
+
+         // hide the old forecast data before displaying new data
+         forecastBox.visible = false;
+         
+         // reset place name while loading new data
+         placeNameText.text = "";
+
+         // show the loading progress bar
+         loadingBar.visible = true;
+
+         // request the new data
+         weatherService.GetWeatherByZipCode.send();
+      } // end function getWeather
+
+      private function weatherResultHandler(event : ResultEvent) : void
+      {
+         // save the result of the web service as XML
+         xmlData = XML( event.result );
+
+         // check that result is valid by checking length of StateCode
+         if ( xmlData.GetWeatherByZipCodeResult[ 0 ].
+            StateCode.text().length() != 0 )
+         {
+            // set placeNameText to the city and state of the zip code
+            placeName = xmlData.GetWeatherByZipCodeResult[ 0 ].
+               PlaceName.text() + ", " +
+               xmlData.GetWeatherByZipCodeResult[ 0 ].StateCode.text();
+            placeNameText.text = "5 Day Forecast for " + placeName;
+
+            // set image, temperature and date for each day
+            setData( weatherImage0, weatherTemp0, weatherDay0, 0 );            
+            setData( weatherImage1, weatherTemp1, weatherDay1, 1 );
+            setData( weatherImage2, weatherTemp2, weatherDay2, 2 );
+            setData( weatherImage3, weatherTemp3, weatherDay3, 3 );
+            setData( weatherImage4, weatherTemp4, weatherDay4, 4 );
+
+            forecastBox.visible = true;
+        
+            // save today's high/low as a string
+            highLowTemp =  xmlData.GetWeatherByZipCodeResult.
+               Details.WeatherData.MaxTemperatureF[ 0 ].text() +
+               "/" + xmlData.GetWeatherByZipCodeResult.Details.
+               WeatherData.MinTemperatureF[ 0 ].text();
+
+            // save the five-day forecast as a string
+            fiveDayForecast = highLowTemp;
+         
+            for ( var i : int = 1; i < 5; i++ )
+            {
+               fiveDayForecast += ", " + xmlData.
+                  GetWeatherByZipCodeResult.Details.WeatherData.
+                     MaxTemperatureF[ i ].text() + "/" + xmlData.
+                        GetWeatherByZipCodeResult.Details.
+                        WeatherData.MinTemperatureF[ i ].text();
+            } // end for
+         
+            // place a marker on the map with the forecast
+            mapController.addCustomPOIMarker(
+               zipcode.text, placeName, highLowTemp, fiveDayForecast,
+               0x990099, 0xFFFFFF);
+
+            mapController.setCenterByAddressAndZoom(
+               zipcode.text, 7, 0 );
+         }
+         else
+         {
+            Alert.show( "Invalid zip code" );
+         }   
+         // hide the loading progress bar
+         loadingBar.visible = false;
+
+         // enable getWeatherButton
+         getWeatherButton.enabled = true;
+      } // end function weatherResultHandler
+
+      private function setData( forecastImage : Image, 
+         tempText : Text, dateText : Text, i : int ) : void
+      {
+         // set the image for each day
+         forecastImage.source = xmlData.GetWeatherByZipCodeResult.
+            Details.WeatherData.WeatherImage[ i ].text();
+
+         // set the temperature for each day
+         tempText.text = xmlData.GetWeatherByZipCodeResult.
+            Details.WeatherData.MaxTemperatureF[ i ].text() + 
+            "\n" + xmlData.GetWeatherByZipCodeResult.Details.
+            WeatherData.MinTemperatureF[ i ].text();
+
+         // set the date for each day
+         dateText.text = xmlData.GetWeatherByZipCodeResult.
+            Details.WeatherData.Day[ i ].text();
+      }
+   ]]> 
+   </mx:Script>
+   
+   <!-- show/hide animations for forecast boxes -->
+   <mx:Parallel id = "forecastAnimationIn">
+      <mx:Fade duration = "1000" alphaFrom = "0.0" alphaTo = "1.0" />
+      <mx:Zoom zoomWidthTo = "1" zoomHeightTo = "1" zoomWidthFrom = "0"
+      zoomHeightFrom = "0" />
+    </mx:Parallel>
+
+   <mx:Parallel id = "forecastAnimationOut">
+      <mx:Fade duration = "500" alphaFrom = "1.0" alphaTo = "0.0" />
+      <mx:Zoom zoomWidthTo = "0" zoomHeightTo = "0" zoomWidthFrom = "1"
+         zoomHeightFrom = "1" />
+    </mx:Parallel>
+
+   <!-- WebService description -->
+   <mx:WebService id = "weatherService"
+      wsdl = "http://www.webservicex.net/WeatherForecast.asmx?WSDL" 
+      fault = "Alert.show( event.fault.faultString )"
+      result = "weatherResultHandler( event )"
+      showBusyCursor = "true">
+      <mx:operation name = "GetWeatherByZipCode" resultFormat = "e4x">
+         <mx:request>
+            <ZipCode>{ zipcode.text }</ZipCode>
+         </mx:request>
+      </mx:operation>
+   </mx:WebService>
+
+   <!-- user interface begins here -->
+   <mx:Panel title = "Weather" width = "100%" height = "100%">
+      <mx:Accordion id = "accordion" width = "100%" height = "100%"
+         creationPolicy = "all">
+         <mx:VBox label = "Forecast View" width = "100%" height = "100%">
+            <mx:ApplicationControlBar 
+               defaultButton = "{ getWeatherButton }">
+            <mx:Label width = "100%"
+               text = "Enter a zip code:" />
+               <mx:TextInput id = "zipcode" left = "10" />
+               <mx:Button id = "getWeatherButton" label = "Get Weather"
+               click = "getWeather()" left = "10" />
+            </mx:ApplicationControlBar>
+
+            <mx:Text fontWeight = "bold" id = "placeNameText" />
+            <mx:ProgressBar id = "loadingBar" indeterminate = "true" 
+               labelPlacement = "bottom" visible = "false" minimum = "0"
+               maximum = "100" label = "Loading Weather Data" 
+               direction = "right" width = "75%" />
+            
+            <!-- forecastBox holds the five-day forecast -->
+            <!-- start off as hidden, define show and hide effects -->
+            <mx:HBox id = "forecastBox" width = "100%" height = "100%"
+               visible = "false" showEffect = "{ forecastAnimationIn }" 
+               hideEffect = "{ forecastAnimationOut }">
+               <mx:VBox id = "forecastBox0" horizontalAlign = "center"
+                  borderStyle = "solid" width = "20%" height = "0%">
+                  <mx:Text id = "weatherDay0" />
+                  <mx:Image id = "weatherImage0" />
+                  <mx:Text id = "weatherTemp0" />
+               </mx:VBox>
+               
+               <mx:VBox horizontalAlign = "center"
+                  borderStyle = "solid" width = "20%">
+                  <mx:Text id = "weatherDay1" />
+                  <mx:Image id = "weatherImage1" />
+                  <mx:Text id = "weatherTemp1" />
+               </mx:VBox>
+               
+               <mx:VBox horizontalAlign = "center"
+                  borderStyle = "solid" width = "20%">
+                  <mx:Text id = "weatherDay2" />
+                  <mx:Image id = "weatherImage2" />
+                  <mx:Text id = "weatherTemp2" />
+               </mx:VBox>
+               
+               <mx:VBox horizontalAlign = "center"
+                  borderStyle = "solid" width = "20%">
+                  <mx:Text id = "weatherDay3" />
+                  <mx:Image id = "weatherImage3" />
+                  <mx:Text id = "weatherTemp3" />
+               </mx:VBox>
+               
+               <mx:VBox horizontalAlign = "center"
+                  borderStyle = "solid" width = "20%">
+                  <mx:Text id = "weatherDay4" />
+                  <mx:Image id = "weatherImage4" />
+                  <mx:Text id = "weatherTemp4" />
+               </mx:VBox>
+            </mx:HBox>
+         </mx:VBox>
+         <mx:VBox label = "Map View" width = "100%" height = "100%">
+            <!-- create Yahoo! Map -->
+            <yahoo:YahooMapService id = "yahooMap" UUID = "{ UUID }" 
+               swfDomId = "{ swfDomID }"
+               apiId = "{ YahooAPIKey }" 
+               mapURL = "{ mapURL }" width = "600" height = "400" />
+            <mx:HBox>
+               <mx:Button label = "Back"
+                  click = "accordion.selectedIndex=0;" />
+               <mx:Button label = "Clear"
+                  click = "mapController.removeAllMarkers();" />
+            </mx:HBox>
+         </mx:VBox> <!-- end "Map View" Section -->
+      </mx:Accordion>
+   </mx:Panel> 
+</mx:Application>

@@ -1,0 +1,77 @@
+// Fig. 18.13 : map.as
+// Handle the map functions for the addressBook demo
+import mx.managers.CursorManager;
+import flash.utils.getTimer;
+import flash.utils.Timer;
+import com.yahoo.webapis.maps.methodgroups.*;
+import mx.controls.Alert;
+
+// begin define constants
+private const swfDomID : String = "addressBook";   
+private const UUID : int = getTimer();
+
+// YahooAPIKey string must be your own from developer.yahoo.com
+private const YahooAPIKey : String = "YOUR_YAHOO_ID_HERE";
+private const mapURL : String = "as2map.swf";
+private var mapController:MapController;
+
+private function loadMap() : void
+{
+   CursorManager.setBusyCursor(); // turn on busy cursor
+
+   // wait 2 seconds, then call initMap method
+   var delayWhileLoading:Timer = new Timer( 2000, 1 );
+   delayWhileLoading.addEventListener( "timer", initMap );
+   delayWhileLoading.start();
+} // end function loadMap
+
+// Handles map after it has loaded
+public function initMap( event : TimerEvent ):void 
+{   
+   // instantiates map controller
+   mapController = new MapController( yahooMap ); 
+      
+   // instantiates panTool method
+   var panTools:PanTool = new PanTool( yahooMap ); 
+
+   // allows user to pan accross the map
+   panTools.setPanTool( true ); 
+   
+   // instantiates the maps widget class
+   var widgets:Widgets = new Widgets( yahooMap ); 
+      
+   // activates Navigator widget
+   widgets.showNavigatorWidget(); 
+      
+   // activates map type selection widget
+   widgets.showSatelliteControlWidget();
+
+   // turn off busy cursor
+   CursorManager.removeBusyCursor(); 
+}  // end function initMap
+
+// places a labeled marker at the currently selected address
+public function setMarkerByAddress() : void 
+{
+   mapController.removeAllMarkers(); // clear previous markers
+   
+   // add marker at specified address,
+   // labeled with contact's name and address
+   mapController.addCustomPOIMarker(
+      ( contactsView.selectedItem.street + " " + 
+      contactsView.selectedItem.city + " " + 
+      contactsView.selectedItem.state ), 
+      contactsView.selectedItem.firstname, 
+      contactsView.selectedItem.lastname,  
+      (contactsView.selectedItem.street + "\n" + 
+      contactsView.selectedItem.city + ", " + 
+      contactsView.selectedItem.state + " " + 
+      contactsView.selectedItem.zip ),
+      0x990099, 0xFFFFFF );
+
+   // instantly center on address and zoom in
+   mapController.setCenterByAddressAndZoom(
+      contactsView.selectedItem.street + " " +
+      contactsView.selectedItem.city + " " + 
+      contactsView.selectedItem.state, 5, 0 );
+} // end function setMarkerByAddress

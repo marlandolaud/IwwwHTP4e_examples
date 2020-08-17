@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Fig. 14.39: deitel-20.xml -->
+<!-- RSS 2.0 feed of Deitel Resource Centers -->
+<rss version="2.0">
+   <channel>
+      <title>
+         Internet &#38; World Wide Web How to Program: 
+         Deitel Resource Centers
+      </title>
+      <link>http://www.deitel.com/ResourceCenters.html</link>
+      <description>
+         Check out our growing network of Resource Centers that focus on 
+         many of today's hottest programming, Web 2.0 and technology 
+         topics. Start your search here for downloads, tutorials, 
+         documentation, books, e-books, blogs, RSS feeds, journals, 
+         articles, training, webcasts, podcasts, videos and more.
+      </description>
+      <languague>en-us</languague>
+      <image>
+         <url>
+            http://www.deitel.com/Portals/0/deitel_transparent_smaller.png
+         </url>
+         <title>Deitel.com</title>
+         <link>http://www.deitel.com/</link>
+      </image>
+
+      <item>
+         <title>Adobe® Flex</title>
+         <link>http://www.deitel.com/Flex/</link>
+         <description>
+            <p>
+            Welcome to the Adobe® Flex™ Resource Center. Adobe Flex 2 is a 
+            rich Internet application (RIA) framework that allows you to 
+            create scalable, cross-platform, multimedia-rich applications 
+            for delivery within the enterprise or across the Internet. 
+            Start your search here for resources, downloads, tutorials, 
+            documentation, books, e-books, articles, blogs and more that 
+            will help you develop Flex applications.
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+
+      <item>
+         <title>AJAX</title>
+         <link>http://www.deitel.com/Ajax/</link>
+         <description>
+            <p>
+            The term AJAX (Asynchronous JavaScript and XML) was coined by 
+            Jesse James Garrett of Adaptive Path, Inc. in February 2005 to 
+            describe a range of technologies for developing 
+            high-performance, Web-based applications. AJAX applications 
+            include Google Maps, Yahoo's FlickR and many more. AJAX 
+            separates the user interaction portion of an application from 
+            its server interaction, enabling both to proceed 
+            asynchronously in parallel. This enables AJAX Web-based 
+            applications to perform at speeds approaching those of desktop 
+            applications reducing or even eliminating the performance 
+            advantage that desktop applications have traditionally had 
+            over Web-based applications. This has huge ramifications for 
+            the desktop applications industry-the applications platform of 
+            choice is starting to shift from the desktop to the Web. Many 
+            people believe that the Web-especially in the context of 
+            abundant open source software, inexpensive computers and 
+            exploding Internet bandwidth-will be the great equalizer, 
+            creating the next major growth phase for Internet companies. 
+            Companies developing AJAX-based applications are already 
+            attracting significant venture capitalist interest. Explore 
+            our new links to Ajax articles, tutorials, applications, Ajax 
+            community websites, and more. 
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+
+      <item>
+         <title>ASP.NET</title>
+         <link>http://www.deitel.com/ASPDotNET/</link>
+         <description>
+            <p>
+            ASP.NET is one of the most popular Internet and Web 
+            development tools in use today. Our ASP.NET Resource Center 
+            focuses on the vast amount of free ASP.NET content available 
+            online, plus some for-sale items. Start your search here for 
+            tools, downloads, text and video tutorials, webcasts, 
+            podcasts, wikis, documentation, reference manuals, 
+            conferences, FAQs, books, e-books, sample chapters, articles, 
+            newsgroups, forums, jobs and contract opportunities, and more 
+            that will help you develop ASP.NET-based applications. Keep 
+            track of ASP.NET blogs for the latest news and developments, 
+            or sign up for RSS feeds to be notified promptly of each new 
+            development.
+            </p>
+         </description>
+         <category>Programming</category>
+         <category>Microsoft</category>
+      </item>
+
+      <item>
+         <title>CSS</title>
+         <link>http://www.deitel.com/CSS21/</link>
+         <description>
+            <p>
+            Welcome to the CSS 2.1 Resource Center. CSS, or Cascading 
+            Style Sheets, is a style sheet language that allows for easy 
+            application of complex and varied styles to HTML documents. 
+            HTML is designed to specify content and structure of a 
+            document, while CSS specifies how that content should be 
+            displayed. CSS can save time by applying a style to many 
+            elements, where they would need to be applied one at a time 
+            using HTML. CSS can also reduce load time and bandwidth 
+            requirements, since a style sheet that applies to an entire 
+            website can be loaded once and cached. Using advanced CSS 
+            techniques, the entire layout of a website can be defined 
+            with far more flexibility and fewer restrictions than 
+            table-based layouts. CSS 2.1 is the most recent version of the 
+            CSS specification. CSS 3 is in development, and some features 
+            are already implemented in browsers like Firefox and 
+            Opera. Start your search here for CSS resources, including 
+            demos, sample code, articles, tutorials, downloads, forums, 
+            FAQs and more.
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+
+      <item>
+         <title>Flash 9®</title>
+         <link>http://www.deitel.com/Flash9/</link>
+         <description>
+            <p>
+            Welcome to the Flash 9® Resource Center. The Adobe® Flash 
+            Player is a multimedia player and a client runtime that is 
+            compatible across various operating systems, browsers, mobile 
+            devices and other platforms. Flash Player 9, the latest 
+            version of this product, has many new and advanced features, 
+            including high-quality video, enhanced security—and it is 
+            about 10 times faster than its prior version. The Flash Player 
+            9 uses ActionScript™ 3.0—a scripting language that allows 
+            Flash Player to be richly interactive. Flash has also been 
+            successfully incorporated into mobile devices using Flash 
+            Lite™, a platform for running Rich Internet Applications. 
+            Start your search here for Flash resources, such as demos, 
+            videos, articles, tutorials, downloads, books, blogs and more.
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+
+      <item>
+         <title>JavaScript</title>
+         <link>http://www.deitel.com/JavaScript/</link>
+         <description>
+            <p>
+            Welcome to the JavaScript Resource Center. The JavaScript 
+            scripting language was originally developed by Netscape in 
+            December 1995, and is commonly used in web applications. We 
+            present key server-side scripting languages in our Perl, 
+            Python and PHP Resource Centers. This resource center presents 
+            JavaScript, which is the most widely used client-side 
+            scripting language. JScript is Microsoft's version of 
+            JavaScript. Both JavaScript and JScript have at their core the 
+            ECMA-262 Edition 3 and ECMAScript standard version 4, 
+            respectively. JavaScript is a mature language which now has a 
+            huge complement of support tools, documentation, free code 
+            generators, libraries and more. It's also a crucial component 
+            of AJAX technology (see our AJAX Resource Center).
+            </p>
+         </description>
+         <category>Programming</category>
+         <category>Java</category>
+      </item>
+
+      <item>
+         <title>PHP</title>
+         <link>http://www.deitel.com/PHP/</link>
+         <description>
+            <p>
+            Welcome to the PHP Resource Center. PHP is a popular scripting 
+            language that was originally designed to program dynamic Web 
+            pages. Its most popular use is for server-side scripting, but 
+            PHP is also used for command-line scripting and for writing 
+            desktop applications. Our PHP Resource Center focuses on the 
+            enormous amount of free PHP content available online. Start 
+            your search here for resources, downloads, tutorials, 
+            documentation, books, e-books, journals, articles, blogs and 
+            more that will help you discover a world of PHP applications 
+            and develop your own.
+            </p>
+         </description>
+         <category>Programming</category>
+         <category>Open Source</category>
+      </item>
+
+      <item>
+         <title>RSS</title>
+         <link>http://www.deitel.com/RSS/</link>
+         <description>
+            <p>
+            Do you get your news online from a variety of sources? Do you 
+            like to follow certain bloggers? Are you interested in 
+            following all of the news and blog entries about your company 
+            and its brands? Now you can get all of the information you 
+            want—and only the information you want—delivered to one place, 
+            using one interface, with RSS (Really Simple Syndication). 
+            RSS, an XML format for syndicating Web content, allows you to 
+            describe news, blog entries, etc. You use desktop or Web-based 
+            RSS readers and aggregators to receive and read the feeds as 
+            they are published. In this resource center, we highlight the 
+            numerous RSS aggregators available, tools and services (for 
+            publishing your feeds, etc.), tutorials for creating your own 
+            RSS feeds, popular books on RSS and more.
+            </p>
+         </description>
+         <category>Web 2.0</category>
+      </item>
+
+      <item>
+         <title>Ruby</title>
+         <link>http://www.deitel.com/Ruby/</link>
+         <description>
+            <p>
+            One of the most exciting developments in programming over the 
+            last few years is the emergence of Ruby-a free, highly 
+            portable, open-source scripting language that was created by 
+            Yukihiro Matsumoto in 1995. It is already extremely popular in 
+            Japan and is coming on strong in the U.S. Web development 
+            community.Ruby is an interpreted, object-oriented language 
+            with functionality that is similar to Java, Perl and Python.  
+            In addition, the Ruby-based Web-application framework-Ruby on 
+            Rails-enables developers to build powerful Web applications. 
+            Ruby and Ruby on Rails are known for their simplicity. Some 
+            developers have experienced many-fold increases in 
+            productivity over .NET and Java/J2EE when building similar Web 
+            applications.Our New Ruby Resource Center includes links to 
+            Ruby and Ruby on Rails resources, downloads, tutorials, 
+            documentation, books, e-books, journals, articles, blogs and 
+            more.
+            </p>
+         </description>
+         <category>Programming</category>
+         <category>Open Source</category>
+      </item>
+
+      <item>
+         <title>Silverlight</title>
+         <link>http://www.deitel.com/Silverlight/</link>
+         <description>
+            <p>
+            Welcome to the Silverlight Resource Center. Silverlight 
+            (formerly known as WPF/E—Windows Presenation 
+            Foundation/Everywhere), a competitor to Adobe Flash and 
+            Flex, is a cross-browser and cross-platform plug-in that 
+            allows you to deliver .NET–based RIAs (Rich Internet 
+            Applications)—including audio, video and animations—over
+            the Web. The editorial reviews of Silverlight are strong,
+            noting Silverlight's ease of use, high-qulaity video, 
+            platform independence and more. Start your search here for 
+            Silverlight resources, including really cool demos and 
+            sample applications, articles, tutorials, downloads, sample 
+            code, training courses, forums, FAQs, books, eBooks, sample
+            chapters, and more.
+            </p>
+         </description>
+         <category>Programming</category>
+         <category>Microsoft</category>
+      </item>
+
+      <item>
+         <title>Web 2.0</title>
+         <link>http://www.deitel.com/Web2.0/</link>
+         <description>
+            <p>
+            Check out our Web 2.0 Resource Center for articles, books, 
+            online tutorials, e-books, newsgroups, forums, FAQs, 
+            companies, people, technologies, products, business models, 
+            and much more. And check out our growing list of 
+            Web 2.0-related Deitel Resource Centers, including Web 2.0, 
+            Ajax, Internet Business Initiative, Open Source, RSS,
+            Blogging, Internet Video, XML, Web Services, with lots more
+            coming. We'll point you to the best Web 2.0 resources on 
+            the Internet.
+            </p>
+         </description>
+         <category>Web 2.0</category>
+      </item>
+
+      <item>
+         <title>Web Services</title>
+         <link>http://www.deitel.com/WebServices/</link>
+         <description>
+            <p>
+            Our Web Services Resource Center includes loads of great 
+            resources gathered from the Web. Study the Web Services 
+            tutorials from Microsoft, Sun, IBM and others. Learn about 
+            XML, Web services specifications, SOAP, WSDL, UDDI, .NET Web 
+            services, consuming XML Web services, Web services 
+            architecture and more.Investigate Universal Description, 
+            Discovery and Integration (UDDI)—a project for developing a 
+            set of specifications that define how Web services should be 
+            published so that programmers searching for Web services can 
+            find them early. Study the WSDL (Web Services Description 
+            Language) specification.Learn about the various Web Services 
+            protocols and markup languages including Blocks Extensible 
+            Exchange Protocol (BEEP), Business Process Execution Language 
+            (BPEL), Electronic Business using eXtensible Markup Language 
+            (EbXML), XML Interface for Network Services (XINS) and XML-RPC 
+            (Remote Procedure Call).
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+
+         <item>
+         <title>XHTML</title>
+         <link>http://www.deitel.com/XHTML/</link>
+         <description>
+            <p>
+            Welcome to the XHTML Resource Center. XHTML (the Extensible 
+            HyperText Markup Language) is a successor to HTML that 
+            extends HTML, and makes it XML compliant. Start your search 
+            here for XHTML resources, including introductory tutorials, 
+            videos, webcasts, books, sample chapters, tools, FAQs and 
+            more.
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+
+      <item>
+         <title>XML</title>
+         <link>http://www.deitel.com/XML/</link>
+         <description>
+            <p>
+            XML is one of the most popular Internet and Web development 
+            tools in use today. Our XML Resource Center focuses on the 
+            vast amount of free XML content available online, plus some 
+            for-sale items. Start your search here for tools, 
+            downloads, tutorials, podcasts, wikis, documentation, 
+            conferences, FAQs, books, e-books, sample chapters, 
+            articles, newsgroups, forums, downloads from CNET's 
+            download.com, jobs and contract opportunities, and more 
+            that will help you develop XML applications. Keep track of 
+            XML blogs from Microsoft’s XML team and others for the 
+            latest news and developments or sign up for RSS feeds to be 
+            notified promptly of each new development. Download free 
+            open-source projects. Check out the best job sites and set 
+            up alerts so that you are notified when new jobs are posted.
+            </p>
+         </description>
+         <category>Programming</category>
+      </item>
+   </channel>
+</rss>

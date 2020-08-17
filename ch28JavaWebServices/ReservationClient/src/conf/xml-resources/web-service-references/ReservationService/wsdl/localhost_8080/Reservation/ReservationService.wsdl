@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://reservation.ch28.iw3htp4.deitel.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://reservation.ch28.iw3htp4.deitel.com/" name="ReservationService">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://reservation.ch28.iw3htp4.deitel.com/" schemaLocation="http://pjd:8080/Reservation/ReservationService/__container$publishing$subctx/WEB-INF/wsdl/ReservationService_schema1.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"/>
+    </xsd:schema>
+  </types>
+  <message name="reserve">
+    <part name="parameters" element="tns:reserve"/>
+  </message>
+  <message name="reserveResponse">
+    <part name="parameters" element="tns:reserveResponse"/>
+  </message>
+  <portType name="Reservation">
+    <operation name="reserve">
+      <input message="tns:reserve"/>
+      <output message="tns:reserveResponse"/>
+    </operation>
+  </portType>
+  <binding name="ReservationPortBinding" type="tns:Reservation">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="reserve">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ReservationService">
+    <port name="ReservationPort" binding="tns:ReservationPortBinding">
+      <soap:address location="http://pjd:8080/Reservation/ReservationService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"/>
+    </port>
+  </service>
+</definitions>

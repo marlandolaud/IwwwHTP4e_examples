@@ -1,0 +1,9 @@
+<!-- Fig. 24.45: app/views/messages/new.rhtml -->
+<!-- Allows the user to add a new message without reloading the page. -->
+<%= form_remote_tag :url=> { :action => 'create' }, 
+   :update => 'currentForum' %>                     
+   <%= render :partial => 'form' %>
+   <%= submit_tag "Create" %>
+<%= end_form_tag %>
+<%= link_to_remote 'Cancel', :url=> { :action => 'list' }, 
+   :update => 'currentForum' %>                            

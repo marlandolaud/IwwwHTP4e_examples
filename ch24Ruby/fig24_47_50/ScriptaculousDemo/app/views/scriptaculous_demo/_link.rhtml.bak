@@ -1,0 +1,128 @@
+<!-- Fig. 24.51: app/views/scriptaculous_demo/_link.rhtml -->
+<!-- link partial view for Script.aculo.us demo -->
+<!-- Grow effect -->
+<% if @currentEffect == '0' %>
+   <%= link_to_remote 'Grow', :url => { :action => 'playEffect', 
+   :effect_index => 1 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Grow, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Fade effect -->
+<% elsif @currentEffect == '1' %>
+   <%= link_to_remote 'Fade', :url => { :action => 'playEffect', 
+      :effect_index => 2 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Fade, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Appear effect -->
+<% elsif @currentEffect == '2' %>
+   <%= link_to_remote 'Appear', :url => {:action => 'playEffect', 
+      :effect_index => 3 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Appear, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- BlindUp effect -->
+<% elsif @currentEffect == '3' %>
+   <%= link_to_remote 'BlindUp', :url => { :action => 'playEffect',
+      :effect_index => 4 }, :update => "link", 
+      :before => ( visual_effect( 
+         :BlindUp, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- BlindDown effect -->
+<% elsif @currentEffect == '4' %>
+   <%= link_to_remote 'BlindDown', :url => { :action => 'playEffect', 
+      :effect_index => 5 }, :update => "link", 
+      :before => ( visual_effect( 
+         :BlindDown, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Puff effect -->
+<% elsif @currentEffect == '5' %>
+   <%= link_to_remote 'Puff', :url => { :action => 'playEffect',
+      :effect_index => 6 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Puff, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- SwitchOff effect -->
+<% elsif @currentEffect == '6' %>
+   <%= link_to_remote 'SwitchOff', :url => { :action => 'playEffect',
+      :effect_index => 7 }, :update => "link", 
+      :before => ( visual_effect(
+         :SwitchOff, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- SlideUp effect -->
+<% elsif @currentEffect == '7' %>
+   <%= link_to_remote 'SlideUp', :url => { :action => 'playEffect',       
+      :effect_index => 8 }, :update => "link", 
+      :before => ( visual_effect( 
+         :SlideUp, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- SlideDown effect -->
+<% elsif @currentEffect == '8' %>
+   <%= link_to_remote 'SlideDown', :url => { :action => 'playEffect',     
+      :effect_index => 9 }, :update => "link", 
+      :before => ( visual_effect(
+         :SlideDown, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Shake effect -->
+<% elsif @currentEffect == '9' %>
+   <%= link_to_remote 'Shake', :url => { :action => 'playEffect',
+      :effect_index => 10 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Shake, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Pulsate effect -->
+<% elsif @currentEffect == '10' %>
+   <%= link_to_remote 'Pulsate', :url => { :action => 'playEffect',
+      :effect_index => 11 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Pulsate, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Squish effect -->
+<% elsif @currentEffect == '11' %>
+   <%= link_to_remote 'Squish', :url => { :action => 'playEffect', 
+      :effect_index => 12 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Squish, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Grow effect -->
+<% elsif @currentEffect == '12' %>
+   <%= link_to_remote 'Grow', :url => { :action => 'playEffect', 
+      :effect_index => 13 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Grow, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Fold effect -->
+<% elsif @currentEffect == '13' %>
+   <%= link_to_remote 'Fold', :url => { :action => 'playEffect', 
+      :effect_index => 14 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Fold, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Grow effect -->
+<% elsif @currentEffect == '14' %>
+   <%= link_to_remote 'Grow', :url => { :action => 'playEffect', 
+      :effect_index => 15 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Grow, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- DropOut effect -->
+<% elsif @currentEffect == '15' %>
+   <%= link_to_remote 'DropOut', :url => { :action => 'playEffect', 
+      :effect_index => 16 }, :update => "link", 
+      :before => ( visual_effect( 
+         :DropOut, 'image', :duration => 1.0, :queue => 'end')) %>
+
+<!-- Grow effect -->
+<% elsif @currentEffect == '16' %>
+   <%= link_to_remote 'Grow', :url => { :action => 'playEffect',
+      :effect_index => 17 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Grow, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+
+<!-- Shrink effect -->
+<% elsif @currentEffect == '17' %>
+   <%= link_to_remote 'Shrink', :url => { :action => 'playEffect', 
+      :effect_index => 0 }, :update => "link", 
+      :before => ( visual_effect( 
+         :Shrink, 'image', :duration => 1.0, :queue => 'end' ) ) %>
+<% end %>

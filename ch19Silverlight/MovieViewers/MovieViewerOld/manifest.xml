@@ -1,0 +1,12 @@
+<!-- Fig 19.10: manifest.xml -->
+<!-- Manifest for Movie Viewer on Silverlight Streaming -->
+<SilverlightApp>
+   <source>Scene.xaml</source>      
+   <width>640</width>        
+   <height>620</height>
+   <inplaceInstallPrompt>true</inplaceInstallPrompt>    
+   <background>#D6D6D6</background>    
+   <framerate>24</framerate>    
+   <version>1.0</version>    
+   <isWindowless>false</isWindowless>
+</SilverlightApp>

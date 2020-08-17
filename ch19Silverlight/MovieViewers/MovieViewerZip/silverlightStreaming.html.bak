@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 19.18: silverlightStreaming.html -->
+<!-- HTML wrapper for Movie Viewer hosted on Silverlight Streaming -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head>
+      <title>MovieViewer Hosted on Silverlight Streaming</title>
+      <script type = "text/javascript" 
+         src = "http://agappdom.net/h/silverlight.js"></script>
+      <script type = "text/javascript" 
+         src = "CreateSilverlight.js"></script>
+      <style type = "text/css">
+         .silverlightHost { height: 480px;
+                            width: 640px; }
+      </style>
+   </head>
+   <body>
+      <div id = "Wrapper_MovieViewer" 
+         style = "width: 640px; height: 480px; 
+         overflow: hidden;"></div>
+      <script type = "text/javascript">
+         var Wrapper_MovieViewer =    
+            document.getElementById( "Wrapper_MovieViewer" );
+            CreateSilverlight();
+      </script>
+   </body>
+</html>

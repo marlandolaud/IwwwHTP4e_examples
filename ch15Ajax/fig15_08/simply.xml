@@ -1,0 +1,16 @@
+<?xml version = "1.0"?>
+  <covers>
+      <baseurl>http://test.deitel.com/examples/iw3htp4/flex/coverViewer/thumbs/</baseurl>
+  	  <cover>
+         <image>simplycpp.jpg</image>
+         <title>Simply C++</title>
+      </cover>
+      <cover>
+         <image>simplyvb2005.jpg</image>
+         <title>Simply VB 2005</title>
+      </cover>
+       <cover>
+         <image>simplyjava.jpg</image>
+         <title>Simply Java</title>
+      </cover>
+  </covers>

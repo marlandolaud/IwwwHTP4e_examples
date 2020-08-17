@@ -1,0 +1,113 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!-- Fig. F.3: Unicode.xml -->
+<!-- Unicode encoding for ten different languages -->
+
+<UnicodeEncodings>
+
+   <!-- English -->
+   <WelcomeNote>
+      &#x0057;&#x0065;&#x006C;&#x0063;&#x006F;&#x006D;&#x0065;
+      &#x0020;
+      &#x0074;&#x006F;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- French -->
+   <WelcomeNote>
+      &#x0042;&#x0069;&#x0065;&#x006E;&#x0076;&#x0065;&#x006E;&#x0075;
+	  &#x0065;
+      &#x0020;
+      &#x0061;&#x0075;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- German -->
+   <WelcomeNote>
+      &#x0057;&#x0069;&#x006C;&#x006B;&#x006F;&#x006D;&#x006D;&#x0065;
+	  &#x006E;
+      &#x0020; 
+      &#x007A;&#x0075;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- Japanese -->
+   <WelcomeNote>
+      Unicode
+      &#x3078;&#x3087;&#x3045;&#x3053;&#x305D;&#x0021;
+   </WelcomeNote>
+
+   <!-- Kannada -->
+   <WelcomeNote>
+      &#x0CB8;&#x0CC1;&#x0CB8;&#x0CCD;&#x0CB5;&#x0C97;&#x0CA4;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- Portuguese -->
+   <WelcomeNote>
+      &#x0053;&#x00E9;&#x006A;&#x0061;
+      &#x0020;
+      &#x0042;&#x0065;&#x006D;&#x0076;&#x0069;&#x006E;&#x0064;&#x006F;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- Russian -->
+   <WelcomeNote>
+      &#x0414;&#x043E;&#x0431;&#x0440;&#x043E;
+      &#x0020;
+      &#x043F;&#x043E;&#x0436;&#x0430;&#x043B;&#x043E;&#x0432;&#x0430;
+	  &#x0442;&#x044A;
+      &#x0020;
+      &#x0432;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- Spanish -->
+   <WelcomeNote>
+      &#x0042;&#x0069;&#x0065;&#x006E;&#x0076;&#x0065;&#x006E;&#x0069;
+	  &#x0064;&#x0061;
+      &#x0020;
+      &#x0061;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- Telugu -->
+   <WelcomeNote>
+      &#x0C38;&#x0C41;&#x0C38;&#x0C3E;&#x0C35;&#x0C17;&#x0C24;&#x0C02;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+   <!-- Traditional Chinese -->
+   <WelcomeNote>
+      &#x6B22;&#x8FCE;
+      &#x4F7F;&#x7528;
+      &#x0020;
+      Unicode&#x0021;
+   </WelcomeNote>
+
+</UnicodeEncodings>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2008 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

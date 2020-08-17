@@ -1,0 +1,70 @@
+<?xml version = "1.0" encoding = "ISO-8859-1" ?>
+<!-- Fig. 19.23: bookCoversRSS.xml -->
+<!-- RSS for Deitel book-cover viewer -->
+<rss version = "2.0">
+   <link rel = "alternate" type = "application/rss+xml" 
+      title = "Deitel Cover Viewer" href = "http://www.deitel.com/" />
+   <channel>
+      <title>Deitel Cover Viewer</title>
+      <link>http://www.deitel.com/</link>
+      <description>View the Deitel book covers.</description>
+      <copyright>2008 Deitel And Associates</copyright>
+      <language>en-us</language>
+
+      <item>
+         <title>C How to Program</title>
+         <link>images/chtp5.jpg</link>
+         <image>images/chtp5.jpg</image>
+      </item>
+      <item>
+         <title>C++ How to Program</title>
+         <link>images/cpphtp6.jpg</link>
+         <image>images/cpphtp6.jpg</image>
+      </item>
+      <item>
+         <title>Internet How to Program</title>
+         <link>images/iw3htp4.jpg</link>
+         <image>images/iw3htp4.jpg</image>
+      </item>
+      <item>
+         <title>Java How to Program</title>
+         <link>images/jhtp7.jpg</link>
+         <image>images/jhtp7.jpg</image>
+      </item>
+      <item>
+         <title>VB How to Program</title>
+         <link>images/vbhtp3.jpg</link>
+         <image>images/vbhtp3.jpg</image>
+      </item>
+      <item>
+         <title>Visual C# How to Program</title>
+         <link>images/vcsharphtp2.jpg</link>
+         <image>images/vcsharphtp2.jpg</image>
+      </item>
+      <item>
+         <title>Simply C++</title>
+         <link>images/simplycpp.jpg</link>
+         <image>images/simplycpp.jpg</image>
+      </item>
+      <item>
+         <title>Simply VB 2005</title>
+         <link>images/simplyvb2005.jpg</link>
+         <image>images/simplyvb2005.jpg</image>
+      </item>
+      <item>
+         <title>Simply Java</title>
+         <link>images/simplyjava.jpg</link>
+         <image>images/simplyjava.jpg</image>
+      </item>
+      <item>
+         <title>Small C++ How to Program</title>
+         <link>images/smallcpphtp5.jpg</link>
+         <image>images/smallcpphtp5.jpg</image>
+      </item>
+      <item>
+         <title>Small Java</title>
+         <link>images/smalljavahtp6.jpg</link>
+         <image>images/smalljavahtp6.jpg</image>
+      </item>
+   </channel>
+</rss>

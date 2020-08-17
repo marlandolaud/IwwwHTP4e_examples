@@ -1,0 +1,10 @@
+Fig. 27.10 Application Instructions
+
+To run this application:
+1. Generate a rails application in the Ruby Console
+   C:\InstantRails\rails_apps> rails Welcome
+2. Generate a welcome controller
+   C:\welcome>  ruby script/generate controller welcome
+3. copy/paste welcome_controller.rb into Welcome/app/controllers/
+4. Start web server
+5. Direct your web browser to http://localhost:3000/welcome/index

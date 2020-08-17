@@ -1,0 +1,17 @@
+# Fig. 24.7: arraysAndHashes.rb
+# Arrays and hashes in Ruby.
+fruits = [ "mango", "orange",  "apple", "pear" ] # create an array
+puts "The length of the fruits array is #{fruits.length}" # output length
+puts "The first fruit is #{fruits[0]}" # output first element
+puts "The last fruit is #{fruits[-1]}\n\n" # output last element
+
+fruits.reverse! # reverse the order of the elements in the fruits array
+puts "The length of the fruits array is #{fruits.length}" # output length
+puts "The first fruit is #{fruits[0]}" # output first element
+puts "The last fruit is #{fruits[-1]}\n\n" # output last element
+
+# a simple hash
+food = { "mango" => "fruit", "banana" => "fruit", "onion" => "vegetable" }
+puts "The length of the food hash is #{food.length}" # output length 
+puts "A mango is a #{food["mango"]}" # output value of key mango 
+puts "An onion is a #{food["onion"]}" # output value of key onion 

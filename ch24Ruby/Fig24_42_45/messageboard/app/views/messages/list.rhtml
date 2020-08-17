@@ -1,0 +1,25 @@
+<!-- Fig. 24.44: app/views/messages/list.rhtml -->
+<!-- Forum that allows the user to add a message on the same page. -->
+<div class = "messageList">
+<table style = "width: 400">
+   <tr class="msgHeader">
+      <td><%= @forum.name %></td>
+   </tr>
+   <% for message in @messages %>
+      <tr class="msgTitle">
+         <td>
+            <strong><%= message.title %></strong><br/>
+            by <em><%= message.author %></em> at 
+            <%= message.created_on.strftime( "%m/%d/%Y at %I:%M%p" ) %>
+         </td>
+      </tr>
+      <tr class="msgPost">
+         <td><%= message.message %></td>
+      </tr>
+   <% end %>
+</table>
+
+<%= link_to_remote 'New message', 
+   :url => { :action => 'new' },  
+   :update => 'currentForum'%>    
+</div>

@@ -1,0 +1,53 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <DefaultClrNameSpace>MediaPlayerBeta</DefaultClrNameSpace>
+    <AssemblyName>MediaPlayerBeta</AssemblyName>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <AlwaysCompileMarkupFilesInSeparateDomain>false</AlwaysCompileMarkupFilesInSeparateDomain>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MediaPlayerBeta</RootNamespace>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <StartPageUrl>Default.html</StartPageUrl>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ProjectGuid>{7C82BCEB-FB38-45F7-B923-8D4080C98E31}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="Default.html" />
+    <Content Include="Default.html.js">
+      <DependentUpon>Default.html</DependentUpon>
+    </Content>
+    <Content Include="Scene.xaml.js">
+      <DependentUpon>Scene.xaml</DependentUpon>
+    </Content>
+    <Content Include="Silverlight.js" />
+    <Page Include="Scene.xaml" />
+    <Resource Include="apollo15LaunchThumb.jpg" />
+    <Resource Include="baileyThumb.jpg" />
+    <Resource Include="F35Thumb.jpg" />
+    <Resource Include="featherAndHammerThumb.jpg" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2300</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

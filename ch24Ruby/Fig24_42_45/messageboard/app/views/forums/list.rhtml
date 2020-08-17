@@ -1,0 +1,27 @@
+<!-- Fig. 24.43: app/views/forums/list.rhtml -->
+<!-- Displaying a list of messages without reloading the page. -->
+<h1>Deitel Message Forums</h1>
+<div class = "forumList">
+   <h2>Available Forums</h2>
+   <ul>
+      <% for forum in @forums %>
+         <li>
+            <%= link_to_remote ( forum.name,                             
+               { :url => { :controller => 'messages',                    
+               :action => 'list', :forum_id => forum.id },             
+               :update => 'currentForum' },                             
+               { :class => ( forum.created_on < 5.minutes.ago ? 
+               'recent': nil ) } ) %>
+         </li>
+      <% end %>
+   </ul>
+   <% if ( session[ :user ] ) then %>
+      <h2>Forum Management</h2>
+      <ul>
+         <li><%= link_to 'Add a Forum', :action => 'new' %></li>
+         <li><%= link_to 'Delete a Forum', :action => 'delete' %></li>
+      </ul>
+   <% end %>
+</div>
+<div id = 'currentForum' class = "ajaxComponent">
+</div>                                           

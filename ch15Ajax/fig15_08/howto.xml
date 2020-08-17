@@ -1,0 +1,36 @@
+<?xml version = "1.0"?>
+  <covers>
+      <baseurl>http://test.deitel.com/examples/iw3htp4/flex/coverViewer/thumbs/</baseurl>
+  	  <cover>
+         <image>chtp5.jpg</image>
+         <title>C How to Program</title>
+      </cover>
+  	  <cover>
+         <image>cpphtp6.jpg</image>
+         <title>C++ How to Program</title>
+      </cover>
+      <cover>
+         <image>iw3htp4.jpg</image>
+         <title>Internet How to Program</title>
+      </cover>
+      <cover>
+         <image>jhtp7.jpg</image>
+         <title>Java How to Program</title>
+      </cover>
+      <cover>
+         <image>vbhtp3.jpg</image>
+         <title>Visual Basic How To Program</title>
+      </cover>
+      <cover>
+         <image>vcsharphtp2.jpg</image>
+         <title>Visual C# How To Program</title>
+      </cover>
+	   <cover>
+         <image>smallcpphtp5.jpg</image>
+         <title>Small C++ How to Program</title>
+      </cover>
+       <cover>
+         <image>smalljavahtp6.jpg</image>
+         <title>Small Java How to Program</title>
+      </cover>
+  </covers>

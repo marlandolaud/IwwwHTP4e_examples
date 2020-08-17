@@ -1,0 +1,199 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!-- Fig. 18.7 : addressBook.mxml -->
+<!-- HTTPService, Validators, and new UI elements -->
+<mx:Application xmlns:mx = "http://www.adobe.com/2006/mxml"
+   layout = "vertical"
+   xmlns:yahoo = "com.yahoo.webapis.maps.*"
+   creationComplete = "getContacts.send(); initMap();">
+
+   <!-- import XML file -->
+   <mx:HTTPService
+      id = "getContacts" 
+      url = "contacts.xml"
+      showBusyCursor = "true"
+      resultFormat = "object"
+      result = "addressCollection = ArrayCollection( 
+         getContacts.lastResult.contacts.contact )"
+      fault = "Alert.show( event.fault.message )" /> 
+     
+   <!-- validators for "Edit Contact" fields -->
+   <mx:StringValidator id = "firstnameValidator" source = "{ firstName }"
+      property = "text" required = "true" trigger = "{ save }" 
+      triggerEvent = "click" valid = "saveContact()" />
+   <mx:StringValidator id = "lastnameValidator" source = "{ lastName }" 
+      property = "text" required = "false" />
+   <mx:ZipCodeValidator id = "zipValidator" source = "{ zipCode }"
+      property = "text" required = "false" />
+   <mx:EmailValidator id = "emailValidator" source = "{ eMail }" 
+      property = "text" required = "false" />
+   <mx:PhoneNumberValidator id = "phoneValidator" source = "{ phone }" 
+      property = "text" required = "false" />
+
+   <mx:Script>
+      import mx.collections.ArrayCollection;
+
+      // tell compiler to register an event for the addressCollection 
+      // variable, allowing it to be bound to another object
+      [Bindable]
+      private var addressCollection : ArrayCollection;
+   </mx:Script>
+
+   <!-- include ActionScript to implement search filter -->
+   <mx:Script source = "search.as" />
+
+   <!-- include ActionScript to implement Yahoo! Maps component -->
+   <mx:Script source = "map.as" />
+   
+   <!-- include ActionScript to implement button actions -->
+   <mx:Script source = "buttonActions.as" />
+
+   <mx:Panel
+      layout = "vertical" width = "100%" height = "100%" 
+      title = "Address Book">
+      <mx:Accordion id = "accordion" width = "100%" height = "100%" 
+         creationPolicy = "all">
+         <mx:VBox label = "View Contacts">
+            <!-- search box, calls filter function on any change -->
+            <mx:ApplicationControlBar>
+               <mx:Label text = "Search:" />
+               <mx:TextInput id = "textFilter"
+                  width = "100%"
+                  change = "filter();"/>
+            </mx:ApplicationControlBar> <!-- End Search Box -->
+           
+            <!-- contacts data grid, populated with addressCollection -->
+            <!-- call setMarkerByAddress on change of selection -->
+            <mx:DataGrid id = "contactsView"
+               dataProvider = "{ addressCollection }" 
+               width = "100%" height = "100%" 
+               change = "setMarkerByAddress();">
+               <mx:columns>
+                  <mx:DataGridColumn dataField = "firstname"
+                     headerText = "First Name" />
+                  <mx:DataGridColumn dataField = "lastname" 
+                     headerText = "Last Name" />
+                  <mx:DataGridColumn dataField = "street"
+                     headerText = "Street" />
+                  <mx:DataGridColumn dataField = "city" 
+                     headerText = "City" />
+                  <mx:DataGridColumn dataField = "state" 
+                     headerText = "State" />
+                  <mx:DataGridColumn dataField = "zip" 
+                     headerText = "Zip" />
+                  <mx:DataGridColumn dataField = "email" 
+                     headerText = "E-Mail" />
+                  <mx:DataGridColumn dataField = "phone" 
+                     headerText = "Phone Number" />
+               </mx:columns>
+            </mx:DataGrid>
+            
+            <mx:ControlBar>
+               <!-- start contact action buttons -->
+               <mx:Button label = "New" 
+                  click = "newContact()" />
+               <mx:Button label = "Delete" 
+                  click = "Alert.show( 'Are you sure?', 
+                  'Delete Contact', 
+                  mx.controls.Alert.YES | mx.controls.Alert.CANCEL,
+                  this, deleteContact );" />
+               <mx:Button label = "Get Directions" 
+                  click = "getDirections();" />
+               <mx:Button label = "Edit" 
+                  click = "accordion.selectedIndex = 2;" />
+               <mx:Button label = "View on Map" 
+                  click = "accordion.selectedIndex = 1;" />
+               <mx:Button label = "E-Mail" 
+                  click = "emailContact();" />
+               <!-- end contact action buttons -->
+            </mx:ControlBar>
+         </mx:VBox> <!-- end "View Contacts" Section -->
+
+         <mx:VBox label = "Map View">
+            <!-- create Yahoo! Map -->
+            <yahoo:YahooMapService id = "yahooMap" UUID = "{ UUID }" 
+               swfDomId = "{ swfDomID }"
+               apiId = "{ YahooAPIKey }" 
+               mapURL = "{ mapURL }" width = "600" height = "400" />
+            <mx:Button label = "Back to Contacts"
+               click = "accordion.selectedIndex = 0;" />
+         </mx:VBox> <!-- end "Map View" Section -->
+
+         <mx:VBox label = "Edit Contact">
+            <!-- begin edit contact form, set default button to "save" -->
+            <mx:Form width = "100%" backgroundColor = "#ffffff" 
+               defaultButton = "{ save }">
+               <!-- edit contact text fields, bound to data -->
+               <mx:FormItem label = "First Name:" required = "true">
+                  <mx:TextInput id = "firstName" 
+                     text = "{ contactsView.selectedItem.firstname }" />
+               </mx:FormItem>
+               <mx:FormItem label = "Last Name:">
+                  <mx:TextInput id = "lastName"  
+                     text = "{ contactsView.selectedItem.lastname }" />
+               </mx:FormItem>
+               <mx:FormItem label = "Street Address:">
+                  <mx:TextInput id = "streetAddress"  
+                     text = "{ contactsView.selectedItem.street }" />
+               </mx:FormItem>
+               <mx:FormItem label = "City:">
+                  <mx:TextInput id = "city"  
+                     text = "{ contactsView.selectedItem.city }" />
+               </mx:FormItem>
+               <mx:FormItem label = "State:">
+                  <mx:TextInput id = "state"  
+                     text = "{ contactsView.selectedItem.state }" />
+               </mx:FormItem>
+               <mx:FormItem label = "Zip Code:">
+                  <mx:TextInput id = "zipCode"  
+                     text = "{ contactsView.selectedItem.zip }" />
+               </mx:FormItem>
+               <mx:FormItem label = "E-Mail Address:">
+                  <mx:TextInput id = "eMail"  
+                     text = "{ contactsView.selectedItem.email }" />
+               </mx:FormItem>
+               <mx:FormItem label = "Phone Number:">
+                  <mx:TextInput id = "phone"  
+                     text = "{ contactsView.selectedItem.phone }" />
+               </mx:FormItem>
+               <!-- end contact text fields -->
+
+               <!-- edit contact action buttons -->
+               <mx:FormItem>
+                  <mx:Button id = "save" label = "Save" />
+               </mx:FormItem>
+               <mx:FormItem>
+                  <!-- cancel button reverts fields to previous values -->
+                  <!-- return user to "View Contacts" section -->
+                  <mx:Button id = "cancel" label = "Cancel" 
+                     click = "cancelContact()" />
+               </mx:FormItem>
+               <mx:FormItem>
+                  <!-- pull up "Delete Contact" dialog box -->
+                  <mx:Button label = "Delete" 
+                     click = "Alert.show( 'Are you sure?', 
+                        'Delete Contact', 
+                        mx.controls.Alert.YES | mx.controls.Alert.CANCEL, 
+                        this, deleteContact );" />
+               </mx:FormItem>
+            </mx:Form> <!-- end edit contact form -->
+         </mx:VBox> <!-- end "Edit Contact" Section -->
+      </mx:Accordion> <!-- end Accordion navigation element -->
+   </mx:Panel> <!-- end UI layout -->
+</mx:Application>
+
+<!--
+**************************************************************************
+* ( C ) Copyright 1992-2007 by Deitel & Associates, Inc. and             *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

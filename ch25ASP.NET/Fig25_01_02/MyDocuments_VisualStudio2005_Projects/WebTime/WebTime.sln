@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Web Developer Express 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/WebTime/", "http://localhost/WebTime", "{153DBC95-CFE4-449B-8A9F-62FDC78847F8}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/WebTime"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\WebTime\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebTime\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/WebTime"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\WebTime\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebTime\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\..\..\inetpub\wwwroot\WebTime\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{153DBC95-CFE4-449B-8A9F-62FDC78847F8}.Debug|.NET.ActiveCfg = Debug|.NET
+		{153DBC95-CFE4-449B-8A9F-62FDC78847F8}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

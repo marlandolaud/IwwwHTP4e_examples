@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Web Developer Express 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/Bug2Bug/", "http://localhost/Bug2Bug", "{341A3466-9B46-4460-955F-DE8D66BB3F3B}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/Bug2Bug"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\Bug2Bug\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Bug2Bug\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Bug2Bug"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\Bug2Bug\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Bug2Bug\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\..\..\inetpub\wwwroot\Bug2Bug\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{341A3466-9B46-4460-955F-DE8D66BB3F3B}.Debug|.NET.ActiveCfg = Debug|.NET
+		{341A3466-9B46-4460-955F-DE8D66BB3F3B}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

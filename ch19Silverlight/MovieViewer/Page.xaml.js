@@ -1,0 +1,273 @@
+// Fig. 19.13: Page.xaml.js
+// JavaScript code-behind for Movie Viewer.
+
+// variables for accessing the Silverlight elements
+var host; // allow access to host plug-in
+var Page;
+var movieMediaElement;
+var downloadProgressRectangle;
+var timeText;
+var timelineRectangle;
+var playHead;
+var timelineTimer;
+var playButton;
+var pauseButton;
+var playOverlayCanvas;
+var timelineTimer;
+var volumeCanvas;
+var volumeHead;
+var crazyDogButton;
+var gravityButton;
+var apollo15Button;
+var f35Button;
+var controls;
+var fullscreenButton;
+var timeCanvas;
+var titleText;
+var playOverlayCanvasListener; // token for event listener
+
+function canvasLoaded( sender, eventArgs )
+{
+   // set variables to more easily access the Silverlight elements
+   host = sender.getHost(); // allow access to host plug-in
+   Page = sender.findName( "Page" );
+   movieMediaElement = sender.findName( "movieMediaElement" );
+   downloadProgressRectangle = sender.findName(
+      "downloadProgressRectangle" );
+   timeText = sender.findName( "timeText" );
+   timelineRectangle = sender.findName( "timelineRectangle" );
+   playHead = sender.findName( "playHead" );
+   timelineTimer = sender.findName( "timelineTimer" );
+   playButton = sender.findName( "playButton" );
+   pauseButton = sender.findName( "pauseButton" );
+   playOverlayCanvas = sender.findName( "playOverlayCanvas" );
+   volumeCanvas = sender.findName( "volumeCanvas" );
+   volumeHead = sender.findName( "volumeHead" );
+   crazyDogButton = sender.findName( "crazyDogButton" );
+   gravityButton = sender.findName( "gravityButton" );
+   apollo15Button = sender.findName( "apollo15Button" );
+   f35Button = sender.findName( "f35Button" );
+   controls = sender.findName( "controls" );
+   fullscreenButton = sender.findName( "fullscreenButton" );
+   timeCanvas = sender.findName( "timeCanvas" );
+   titleText = sender.findName( "titleText" );
+
+   // add an event handler for the onFullScreenChange event
+   host.content.onFullScreenChange = onFullScreenChangedHandler;
+
+   // start the timer
+   timelineTimer.begin();
+} // end function canvasLoaded
+
+// timelineTimer event handler
+function updateTime()
+{
+   // get the video's current position in seconds
+   var elapsedTime = movieMediaElement.position.Seconds;
+   var hours = convertToHHMMSS( elapsedTime )[ 0 ]; // saves hours
+   var minutes = convertToHHMMSS( elapsedTime )[ 1 ]; // saves minutes
+   var seconds = convertToHHMMSS( elapsedTime )[ 2 ]; // saves seconds
+    
+   // set text of timeText to current time in hh:mm:ss format
+   timeText.text = hours + ":" + minutes + ":" + seconds;
+
+   // set width of downloadProgressRectangle
+   downloadProgressRectangle.width = movieMediaElement.downloadProgress *
+      timelineRectangle.width;
+   
+   // if the movie is playing, place the playHead at a
+   // position representing the playback progress
+   if ( movieMediaElement.position.Seconds &&
+      movieMediaElement.naturalDuration )
+   {
+      playHead[ "Canvas.Left" ] = ( ( movieMediaElement.position.Seconds /
+         movieMediaElement.naturalDuration.Seconds ) *
+         timelineRectangle.Width ) + timelineRectangle[ "Canvas.Left" ];
+   } // end if
+  
+   // if movie is not playing, place the playHead at the beginning
+   else
+   {
+      playHead[ "Canvas.Left" ] = timelineRectangle[ "Canvas.Left" ];
+   } // end else
+      
+   // if download is incomplete or movie is playing
+   if ( movieMediaElement.downloadProgress != 1 ||  
+      movieMediaElement.CurrentState == "Playing" )
+   {
+      timelineTimer.begin(); // run timelineTimer again
+   } // end if
+} // end function updateTime
+
+// handle play and pause buttons
+function playAndPauseButtonEventHandler( sender, eventArgs )
+{
+   // check the CurrentState of the movie;
+   // pause if playing, play if paused or stopped
+   if ( movieMediaElement.CurrentState == "Playing" )
+   {
+      movieMediaElement.pause();
+
+      playButton.Visibility = "Visible"; // show play button
+      pauseButton.Visibility = "Collapsed"; // hide pause button
+   } // end if
+   else 
+   {
+      movieMediaElement.play();
+      timelineTimer.begin(); // start timelineTimer again
+      pauseButton.Visibility = "Visible"; // show pause button
+      playButton.Visibility = "Collapsed"; // hide play button
+      playOverlayCanvas.Visibility = "Collapsed"; // hide "Play" overlay
+   } // end if
+} // end function playAndPauseButtonEventHandler
+
+// handle stop button
+function stopButtonEventHandler( sender, eventArgs )
+{
+   movieMediaElement.stop(); // stop the movie
+   playButton.Visibility = "Visible"; // show play button
+   pauseButton.Visibility = "Collapsed"; // hide pause button
+
+   // show "Play" overlay
+   playOverlayCanvas.Visibility = "Visible";
+   updateTime();
+} // end function stopButtonEventHandler
+
+// handle MediaOpened event 
+function movieOpenedHandler( sender, eventArgs )
+{
+   timelineTimer.begin();
+
+   // show "Play" overlay
+   playOverlayCanvas.Visibility = "Visible";
+} // end function movieOpenedHandler
+
+// handle when movie has reached end
+function movieEndedHandler( sender, eventArgs )
+{
+   movieMediaElement.stop(); // stop the movie
+   playButton.Visibility = "Visible"; // show play button
+   pauseButton.Visibility = "Collapsed"; // hide pause button
+
+   // show "Play" overlay
+   playOverlayCanvas.Visibility = "Visible";
+   updateTime();
+} // end function movieEndedHandler
+
+function movieThumbHandler ( sender, eventArgs ) // a thumb was clicked
+{
+   movieMediaElement.stop(); // stop movie
+   playButton.Visibility = "Visible"; // show play button
+   pauseButton.Visibility = "Collapsed"; // hide pause button
+
+   switch ( sender.name )
+   {
+      case "crazyDogButton": // open Crazy Dog video
+         movieMediaElement.source = "bailey.wmv"; 
+         break;
+      case "gravityButton": // open Gravity video
+         movieMediaElement.source = "featherAndHammer.wmv";
+         break;
+      case "apollo15Button": // open Apollo 15 video
+         movieMediaElement.source = "apollo15Launch.wmv";
+         break;
+      case "f35Button": // open F35 Landing video 
+         movieMediaElement.source = "F35.wmv";
+         break;
+   } // end switch
+} // end function movieThumbHandler
+
+// handle toggle full-screen button by toggling fullScreen state
+function toggleFullScreen( sender, eventArgs )
+{
+   host.content.fullScreen = !host.content.fullScreen;
+} // end function toggleFullScreen
+
+// handle onFullScreenChange event
+function onFullScreenChangedHandler( sender, eventArgs )
+{
+   // update layout based on current dimensions
+   updateLayout( host.content.actualWidth,
+      host.content.actualHeight );
+
+   // update time and timeline
+   updateTime();
+} // end function onFullScreenChangedHandler
+
+// reposition and resize elements based on new dimensions
+function updateLayout( width, height )
+{
+   // resize and reposition the elements based on the screen dimensions
+   Page.width = width;
+   Page.height = height;
+   movieMediaElement.width = width;
+   movieMediaElement.height = height - 220;
+   movieMediaElement[ "Canvas.Left" ] = 
+      ( width / 2 ) - ( ( movieMediaElement.width ) / 2 );
+   movieMediaElement[ "Canvas.Top" ] = 
+      ( ( height - 220 ) / 2 ) - ( movieMediaElement.height / 2 );
+   controls.width = width;
+   playOverlayCanvas[ "Canvas.Left" ] = 
+      ( width / 2 ) - ( ( playOverlayCanvas.width ) / 2 );
+   playOverlayCanvas[ "Canvas.Top" ] = 
+      ( ( height - 220 ) / 2 ) - ( playOverlayCanvas.height / 2 );
+   controls[ "Canvas.Left" ] = ( width / 2 ) - ( ( controls.width ) / 2 );
+   controls[ "Canvas.Top" ] = height - controls.height;
+   timelineRectangle.width = controls.width - 235;
+   fullscreenButton[ "Canvas.Left" ] = controls.width - 55;
+   timeCanvas[ "Canvas.Left" ] = controls.width - 140;
+   volumeCanvas[ "Canvas.Left" ] = controls.width - 22;
+   titleText[ "Canvas.Left" ] = 
+      ( width / 2 ) - ( ( titleText.width ) / 2 );
+} // end function updateLayout
+
+// handle timelineCanvas's MouseLeftButtonDown event
+function timelineHandler( sender, eventArgs )
+{
+   // determine new time from mouse position
+   var elapsedTime = ( ( eventArgs.getPosition( timelineRectangle ).x ) / 
+      timelineRectangle.Width ) * 
+      movieMediaElement.NaturalDuration.seconds;
+   var hours = convertToHHMMSS( elapsedTime )[ 0 ]; // Saves hours
+   var minutes = convertToHHMMSS( elapsedTime )[ 1 ]; // Saves minutes
+   var seconds = convertToHHMMSS( elapsedTime )[ 2 ]; // Saves seconds
+   movieMediaElement.Position = hours + ":" + minutes + ":" + seconds;
+   updateTime();
+} // end function timelineHandler
+
+// handle volume's MouseLeftButtonDown event
+function volumeHandler( sender, eventArgs )
+{
+   movieMediaElement.volume = 1 - ( ( eventArgs.getPosition( 
+      volumeCanvas ).y ) / 30 );
+   volumeHead[ "Canvas.Top" ] =
+      eventArgs.getPosition( volumeCanvas ).y;
+} // end function volumeHandler
+
+// get the hours, minutes and seconds of the video's current position
+// Date object converts seconds to hh:mm:ss format
+function convertToHHMMSS( seconds )
+{
+   var datetime = new Date( 0, 0, 0, 0, 0, seconds );
+   var hours = datetime.getHours(); // saves hours to var
+   var minutes = datetime.getMinutes(); // saves minutes to var
+   var seconds = datetime.getSeconds(); // saves seconds to var
+
+   // ensure hh:mm:ss format
+   if ( seconds < 10 )
+   {
+       seconds = "0" + seconds;
+   } // end if
+
+   if ( minutes < 10 ) 
+   {
+       minutes = "0" + minutes;
+   } // end if
+
+   if ( hours < 10 )
+   {
+      hours = "0" + hours;
+   } // end if
+
+   return [ hours, minutes, seconds ]
+} // end function convertToHHMMSS

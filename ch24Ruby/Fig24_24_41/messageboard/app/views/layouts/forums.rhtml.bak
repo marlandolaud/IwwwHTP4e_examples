@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 24.42: app/views/layouts/forums.rhtml -->
+<!-- Forums layout that uses the default JavaScript libraries. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+   <title>Forums: <%= controller.action_name %></title>
+   <%= stylesheet_link_tag 'scaffold' %> <!-- link to a stylesheet -->
+   <%= javascript_include_tag :defaults %>
+</head>
+<body>
+   <div style = "text-align: right">
+      <% if ( session[ :user ] ) then %> <!-- if user is logged on -->
+         <!-- code to display if user is logged on -->
+         <%= "Logged In As #{ session[ :user ].name }: " %>
+         <%= link_to 'Log Out', 
+            :controller => 'user', :action => 'logout' %>
+      <% else %> <!-- user is not logged on -->
+         <!-- code to display if user is not logged on -->
+         <%= "Not Currently Logged In:" %>
+         <%= link_to 'Log In', 
+            :controller => 'user', :action => 'admin' %>
+      <% end %> <!-- end if -->
+   </div>
+   <p style="color: green"><%= flash [ :notice ] %></p>
+   <p style="color: red"><%= flash[ :error ] %></p>
+
+   <%= yeild %> <!-- displays template -->
+</body>
+</html>

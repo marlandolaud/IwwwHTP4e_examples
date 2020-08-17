@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.deitel.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.deitel.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.deitel.com/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="first" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="second" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Subtract">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="first" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="second" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubtractResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubtractResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Bigger">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="first" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="second" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BiggerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BiggerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Smaller">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="first" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="second" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmallerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SmallerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqualTo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="first" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="second" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EqualToResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EqualToResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubtractSoapIn">
+    <wsdl:part name="parameters" element="tns:Subtract" />
+  </wsdl:message>
+  <wsdl:message name="SubtractSoapOut">
+    <wsdl:part name="parameters" element="tns:SubtractResponse" />
+  </wsdl:message>
+  <wsdl:message name="BiggerSoapIn">
+    <wsdl:part name="parameters" element="tns:Bigger" />
+  </wsdl:message>
+  <wsdl:message name="BiggerSoapOut">
+    <wsdl:part name="parameters" element="tns:BiggerResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmallerSoapIn">
+    <wsdl:part name="parameters" element="tns:Smaller" />
+  </wsdl:message>
+  <wsdl:message name="SmallerSoapOut">
+    <wsdl:part name="parameters" element="tns:SmallerResponse" />
+  </wsdl:message>
+  <wsdl:message name="EqualToSoapIn">
+    <wsdl:part name="parameters" element="tns:EqualTo" />
+  </wsdl:message>
+  <wsdl:message name="EqualToSoapOut">
+    <wsdl:part name="parameters" element="tns:EqualToResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HugeIntegerSoap">
+    <wsdl:operation name="Add">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Adds two huge integers.</wsdl:documentation>
+      <wsdl:input message="tns:AddSoapIn" />
+      <wsdl:output message="tns:AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subtracts two huge integers.</wsdl:documentation>
+      <wsdl:input message="tns:SubtractSoapIn" />
+      <wsdl:output message="tns:SubtractSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Bigger">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Determines whether the first integer is larger than the second integer.</wsdl:documentation>
+      <wsdl:input message="tns:BiggerSoapIn" />
+      <wsdl:output message="tns:BiggerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Smaller">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Determines whether the first integer is smaller than the second integer.</wsdl:documentation>
+      <wsdl:input message="tns:SmallerSoapIn" />
+      <wsdl:output message="tns:SmallerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EqualTo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Determines whether the first integer is equal to the second integer.</wsdl:documentation>
+      <wsdl:input message="tns:EqualToSoapIn" />
+      <wsdl:output message="tns:EqualToSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HugeIntegerSoap" type="tns:HugeIntegerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://www.deitel.com/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="http://www.deitel.com/Subtract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bigger">
+      <soap:operation soapAction="http://www.deitel.com/Bigger" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Smaller">
+      <soap:operation soapAction="http://www.deitel.com/Smaller" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqualTo">
+      <soap:operation soapAction="http://www.deitel.com/EqualTo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HugeIntegerSoap12" type="tns:HugeIntegerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://www.deitel.com/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap12:operation soapAction="http://www.deitel.com/Subtract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bigger">
+      <soap12:operation soapAction="http://www.deitel.com/Bigger" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Smaller">
+      <soap12:operation soapAction="http://www.deitel.com/Smaller" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EqualTo">
+      <soap12:operation soapAction="http://www.deitel.com/EqualTo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HugeInteger">
+    <wsdl:port name="HugeIntegerSoap" binding="tns:HugeIntegerSoap">
+      <soap:address location="http://test.deitel.com/hugeinteger/hugeinteger.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HugeIntegerSoap12" binding="tns:HugeIntegerSoap12">
+      <soap12:address location="http://test.deitel.com/hugeinteger/hugeinteger.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

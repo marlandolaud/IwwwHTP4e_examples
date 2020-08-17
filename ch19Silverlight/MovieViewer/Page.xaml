@@ -1,0 +1,246 @@
+﻿<!-- Fig. 19.12: Page.xaml -->
+<!-- Movie Viewer user interface described in XAML. -->
+
+<Canvas xmlns="http://schemas.microsoft.com/client/2007"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   Width="640" Height="480" x:Name="Page" Loaded="canvasLoaded">
+   <Canvas.Resources>
+      <Storyboard x:Name="timelineTimer" Completed="updateTime" >
+         <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+            Storyboard.TargetName="invisibleRectangle"
+            Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+            <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0"/>
+         </DoubleAnimationUsingKeyFrames>
+         <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+            Duration="00:00:00.0010000" Storyboard.TargetName="Page"
+            Storyboard.TargetProperty="(Panel.Background).
+               (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+            <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF474747"/>
+         </ColorAnimationUsingKeyFrames>
+      </Storyboard>
+   </Canvas.Resources>
+   <Canvas.Background>
+      <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+         <GradientStop Color="#FF000000" Offset="0"/>
+         <GradientStop Color="#FF505050" Offset="1"/>
+      </LinearGradientBrush>
+   </Canvas.Background>
+   <Rectangle Visibility="Collapsed" x:Name="invisibleRectangle" 
+      Width="21" Height="16" Fill="#FFFFFFFF" Stroke="#FF000000" 
+      Canvas.Left="7" Canvas.Top="103"/>
+   <TextBlock Width="278" Height="60" Canvas.Left="192" Canvas.Top="8" 
+      FontSize="24" TextWrapping="Wrap" x:Name="titleText"><Run 
+      Foreground="#FFFFFFFF" Text="Silverlight Movie Viewer"/></TextBlock>
+   <Canvas x:Name="controls" Width="640" Height="160" Canvas.Top="320">
+      <Canvas MouseLeftButtonDown="movieThumbHandler" Cursor="Hand" 
+         Width="120" Height="114" Canvas.Left="33" Canvas.Top="38"  
+         x:Name="crazyDogButton">
+         <Image Width="120" Height="90" Source="baileyThumb.jpg"/>
+         <TextBlock Width="78" Height="24" Canvas.Left="23" 
+            Canvas.Top="90" TextWrapping="Wrap"><Run 
+            Foreground="#FFFFFFFF" Text="Crazy Dog"/></TextBlock>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="movieThumbHandler" Width="120" 
+         Height="114" Canvas.Left="184" Canvas.Top="38" Cursor="Hand"  
+         x:Name="gravityButton">
+         <Image Width="120" Height="90" 
+            Source="featherAndHammerThumb.jpg"/>
+         <TextBlock Width="52" Height="24" Canvas.Top="90" 
+            TextWrapping="Wrap" Canvas.Left="34"><Run 
+            Foreground="#FFFFFFFF" Text="Gravity"/></TextBlock>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="movieThumbHandler" Width="120" 
+         Height="114" Canvas.Left="335" Canvas.Top="38" Cursor="Hand"  
+         x:Name="apollo15Button">
+         <Image Width="120" Height="90" Source="apollo15LaunchThumb.jpg"/>
+         <TextBlock Width="72" Height="24" Canvas.Left="26" 
+            Canvas.Top="90" TextWrapping="Wrap">
+               <Run Foreground="#FFFFFFFF" Text="Apollo 15"/></TextBlock>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="movieThumbHandler" Width="120" 
+         Height="114" Canvas.Left="487" Canvas.Top="38" Cursor="Hand"  
+         x:Name="f35Button">
+         <Image Width="120" Height="90" Source="F35Thumb.jpg"/>
+         <TextBlock Width="88" Height="24" Canvas.Left="16" 
+            Canvas.Top="90" TextWrapping="Wrap"><Run 
+            Foreground="#FFFFFFFF" Text="F35 Landing"/></TextBlock>
+      </Canvas>
+
+      <!-- define the buttons -->
+      <Canvas MouseLeftButtonDown="playAndPauseButtonEventHandler" 
+         Width="30" Height="30" x:Name="playButton" Cursor="Hand" 
+         Canvas.Left="10">
+         <Rectangle Stroke="#FF000000" Width="30" Height="30" 
+            RadiusX="4" RadiusY="4">
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" 
+                  MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
+                  <GradientStop Color="#FF0000FF" Offset="0"/>
+                  <GradientStop Color="#FF0084FF" Offset="1"/>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Path Stretch="Fill" Stroke="#FFFFFFFF" 
+            StrokeThickness="4" Width="12" Height="12" Data="M223,388     
+            L244,403" StrokeEndLineCap="Round" StrokeStartLineCap="Round" 
+            Canvas.Left="10" Canvas.Top="4"/>
+         <Path Stretch="Fill" Stroke="#FFFFFFFF" 
+            StrokeThickness="4" Width="12" Height="12" Data="M223,388     
+            L244,403" RenderTransformOrigin="0.5,0.5" 
+            StrokeEndLineCap="Square" StrokeStartLineCap="Round" 
+            Canvas.Left="10" Canvas.Top="13">
+            <Path.RenderTransform>
+               <TransformGroup>
+                  <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                  <SkewTransform AngleX="0" AngleY="0"/>
+                  <RotateTransform Angle="0"/>
+                  <TranslateTransform X="0" Y="0"/>
+               </TransformGroup>
+            </Path.RenderTransform>
+         </Path>
+      </Canvas>
+      <Canvas x:Name="timeCanvas" Width="75" Height="23" Canvas.Left="497"
+         Canvas.Top="3">
+         <Rectangle Stroke="#FF000000" Width="75" Height="25" RadiusX="2" 
+            RadiusY="2" StrokeThickness="1">
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                  <GradientStop Color="#FF9A9A9A" Offset="0"/>
+                  <GradientStop Color="#FFFFFFFF" Offset="1"/>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <TextBlock x:Name="timeText" Width="68" Height="17" 
+            Foreground="#FF000000" TextWrapping="Wrap" Canvas.Left="4" 
+            Canvas.Top="3"><Run Text="00:00:00"/></TextBlock>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="volumeHandler" Cursor="Hand" 
+         x:Name="volumeCanvas" Width="15" Height="30" 
+         Canvas.Left="616">
+         <Rectangle Fill="#FF868686" 
+            Stroke="#FF000000" Width="4" Height="30" Canvas.Left="6"/>
+         <Rectangle Opacity="0.5" x:Name="volumeHead" Width="14" 
+            Height="2" Fill="#FFFFFFFF" Stroke="#FFFFFFFF" 
+            StrokeThickness="0" RadiusX="0" RadiusY="0" Canvas.Left="1" 
+            Canvas.Top="14"/>
+      </Canvas>
+      <Canvas x:Name="timelineCanvas" Width="401" Height="26" 
+         Canvas.Left="87" Canvas.Top="2" Cursor="Hand" >
+         <Rectangle x:Name="timelineRectangle" Width="400" Height="4" 
+            Fill="#FFA6A6A6" Stroke="#FF000000" Canvas.Top="11"/>
+         <Rectangle MouseLeftButtonDown="timelineHandler" 
+            x:Name="downloadProgressRectangle" Width="0" 
+            Height="4" Fill="#FFD5D5D5" Stroke="#FF000000" 
+            Canvas.Top="11"/>
+         <Rectangle Opacity="0.5" x:Name="playHead" Width="2" Height="20" 
+            Stroke="#FFFFFFFF" Canvas.Left="1" Canvas.Top="3"/>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="playAndPauseButtonEventHandler" 
+         Width="30" Height="30" x:Name="pauseButton" Cursor="Hand" 
+         Canvas.Left="10" Visibility="Collapsed" >
+         <Rectangle Stroke="#FF000000" Width="30" Height="30" 
+            RadiusX="4" RadiusY="4">
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" 
+                  MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
+                  <GradientStop Color="#FF0000FF" Offset="0"/>
+                  <GradientStop Color="#FF0084FF" Offset="1"/>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Path Stretch="Fill" Stroke="#FFFFFFFF" 
+            StrokeThickness="4" Width="4" Height="18" 
+            RenderTransformOrigin="0.5,0.5" StrokeEndLineCap="Round" 
+            StrokeStartLineCap="Round" Canvas.Left="9" 
+            StrokeDashCap="Flat" Canvas.Top="6" Data="M223,388L223,308"/>
+         <Path Stretch="Fill" Stroke="#FFFFFFFF" 
+            StrokeThickness="4" Width="4" Height="18" 
+            Data="M223,388L223,403" RenderTransformOrigin="0.5,0.5" 
+            StrokeEndLineCap="Round" StrokeStartLineCap="Round" 
+            Canvas.Left="17" StrokeDashCap="Flat" Canvas.Top="6"/>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="toggleFullScreen" Width="30" 
+         Height="30" x:Name="fullscreenButton" Cursor="Hand" 
+         Canvas.Left="582" Canvas.Top="1">
+         <Rectangle Stroke="#FF000000" Width="30" Height="30" 
+            RadiusX="4" RadiusY="4">
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" 
+                  MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
+                  <GradientStop Color="#FF0000FF" Offset="0"/>
+                  <GradientStop Color="#FF0084FF" Offset="1"/>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Rectangle Width="22" Height="22" Stroke="#FFFFFFFF" 
+            StrokeEndLineCap="Square" StrokeStartLineCap="Round" 
+            StrokeThickness="2" RadiusX="2" RadiusY="2" Canvas.Left="4" 
+            Canvas.Top="4"/>
+         <Rectangle Width="10" Height="10" Stroke="#FFFFFFFF" 
+            StrokeEndLineCap="Square" StrokeStartLineCap="Round" 
+            StrokeThickness="2" RadiusX="2" RadiusY="2" Canvas.Left="4" 
+            Canvas.Top="16"/>
+      </Canvas>
+      <Canvas MouseLeftButtonDown="stopButtonEventHandler" Width="30" 
+         Height="30" x:Name="stopButton" Cursor="Hand" Canvas.Left="46">
+         <Rectangle Stroke="#FF000000" Width="30" Height="30" 
+            RadiusX="4" RadiusY="4">
+            <Rectangle.Fill>
+               <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5" 
+                  MappingMode="RelativeToBoundingBox" SpreadMethod="Pad">
+                  <GradientStop Color="#FF0000FF" Offset="0"/>
+                  <GradientStop Color="#FF0084FF" Offset="1"/>
+               </LinearGradientBrush>
+            </Rectangle.Fill>
+         </Rectangle>
+         <Rectangle RadiusX="2" RadiusY="2" Width="14" 
+            Height="18" Canvas.Left="8" Fill="#FFFFFFFF" 
+            StrokeThickness="0" Canvas.Top="6"/>
+      </Canvas>
+   </Canvas>
+   <Canvas x:Name="movieViewCanvas" Width="640" Height="260" 
+      Canvas.Top="46">
+      <MediaElement AutoPlay="false" MediaEnded="movieEndedHandler" 
+         MediaOpened="movieOpenedHandler" x:Name="movieMediaElement" 
+         Width="640" Height="260" Source="bailey.wmv" />
+      <Canvas MouseLeftButtonDown="playAndPauseButtonEventHandler"
+         Width="200" Height="180" Canvas.Left="220" Canvas.Top="35" 
+         Opacity="0.6" Visibility="Collapsed" x:Name="playOverlayCanvas">
+         <Canvas.RenderTransform>
+            <TransformGroup>
+               <ScaleTransform ScaleX="1" ScaleY="1"/>
+               <SkewTransform AngleX="0" AngleY="0"/>
+               <RotateTransform Angle="0"/>
+               <TranslateTransform X="0" Y="0"/>
+            </TransformGroup>
+         </Canvas.RenderTransform>
+         <Rectangle Fill="#FF000000" 
+            Width="200" Height="180" RadiusX="40" 
+            RadiusY="40" Canvas.Left="0" Canvas.Top="0"/>
+         <Ellipse Stroke="#FFFFFFFF" StrokeThickness="6" 
+            Width="100" Height="100" Canvas.Left="49" Canvas.Top="14"/>
+         <Path Fill="#FF010000" Stretch="Fill" Stroke="#FFDFDFDF" 
+            StrokeThickness="6" Width="30" Height="30" Canvas.Left="86" 
+            Canvas.Top="36" Data="M295,189 L319,213" 
+            StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+         <Path Fill="#FF010000" Stretch="Fill" Stroke="#FFDFDFDF" 
+            StrokeThickness="6" Width="30" Height="30" Canvas.Left="86" 
+            Canvas.Top="61" Data="M295,189 L319,213" 
+            RenderTransformOrigin="0.5,0.5" StrokeEndLineCap="Round" 
+            StrokeStartLineCap="Round">
+            <Path.RenderTransform>
+               <TransformGroup>
+                  <ScaleTransform ScaleX="1" ScaleY="1"/>
+                  <SkewTransform AngleX="0" AngleY="0"/>
+                  <RotateTransform Angle="-90"/>
+                  <TranslateTransform X="0" Y="0"/>
+               </TransformGroup>
+            </Path.RenderTransform>
+         </Path>
+         <TextBlock Width="74" Height="49" Canvas.Left="64" 
+            Canvas.Top="120" FontSize="36" Foreground="#FFFFFFFF" 
+            Text="Play" TextWrapping="Wrap"/>
+      </Canvas>
+   </Canvas>
+</Canvas>

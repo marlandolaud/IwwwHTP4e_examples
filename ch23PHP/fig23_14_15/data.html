@@ -1,0 +1,54 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 23.14: data.html -->
+<!-- Form to query a MySQL database. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Sample Database Query</title>
+      <style type = "text/css">
+         body  { background-color: #F0E68C } 
+         h2    { font-family: arial, sans-serif;
+                 color: blue }
+         input { background-color: blue;
+                 color: yellow;
+                 font-weight: bold }
+      </style>
+   </head>
+   <body>
+      <h2>Querying a MySQL database.</h2>
+      <form method = "post" action = "database.php">
+        <div>
+            <p>Select a field to display:
+               <!-- add a select box containing options --> 
+               <!-- for SELECT query -->
+               <select name = "select">                   
+                  <option selected = "selected">*</option>
+                  <option>ID</option>                     
+                  <option>Title</option>                  
+                  <option>Category</option>               
+                  <option>ISBN</option>                   
+               </select></p>
+            <input type = "submit" value = "Send Query" />
+         </div>
+      </form>
+   </body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2008 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

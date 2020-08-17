@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryValidationSelect.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryValidationTextarea.js" type="text/javascript"></script>
+<link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<link href="SpryAssets/SpryValidationSelect.css" rel="stylesheet" type="text/css" />
+<link href="SpryAssets/SpryValidationTextarea.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<form id="form1" method="post" action=""><label>Name:</label>
+  <label><span id="sprytextfield1">
+  <input type="text" name="text1" id="text1" />
+  </span></label>
+  <label><span>  <span class="textfieldRequiredMsg">A value is required.</span><span class="textfieldInvalidFormatMsg">Invalid format.</span></span></label>
+  <p>E-Mail Address: 
+    <label><span id="sprytextfield2">
+    <input type="text" name="text2" id="text2" />
+    <span class="textfieldRequiredMsg">A value is required.</span><span class="textfieldInvalidFormatMsg">Invalid format.</span></span></label>
+  </p>
+  <p>How would you rate our site? 
+    <label><span id="spryselect1">
+    <select name="select1" id="select1">
+      <option value="first">- Choose One -</option>
+      <option value="second">Excellent</option>
+      <option value="third">Good</option>
+      <option value="fourth">Fair</option>
+      <option value="fifth">Poor</option>
+      <option value="sixth">Terrible</option>
+    </select>
+    <span class="selectRequiredMsg">Please select an item.</span></span></label>
+  </p>
+  <p>Comments?</p>
+  <p>
+    <label><span id="sprytextarea1">
+    <textarea name="textarea1" id="textarea1" cols="45" rows="5"></textarea>
+    </span></label>
+  </p>
+  <p>Would you like to be on our mailing list?</p>
+  <p>
+    <label>
+    <input type="radio" name="RadioGroup1" value="radio" id="RadioGroup1_0" />
+Yes</label>
+    <br />
+    <label>
+    <input type="radio" name="RadioGroup1" value="radio" id="RadioGroup1_1" />
+No</label>
+    <br />
+    <label>
+    <input type="radio" name="RadioGroup1" value="radio" id="RadioGroup1_2" />
+Don't Care</label>
+    <br />
+  </p>
+  <p>
+    <label>
+    <input type="submit" name="button" id="button" value="Submit" />
+    </label>
+    <label>
+    <input type="reset" name="button2" id="button2" value="Reset" />
+    </label>
+  </p>
+</form>
+<script type="text/javascript">
+<!--
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {validateOn:["blur", "change"]});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "email", {validateOn:["blur"]});
+var spryselect1 = new Spry.Widget.ValidationSelect("spryselect1", {validateOn:["change"]});
+var sprytextarea1 = new Spry.Widget.ValidationTextarea("sprytextarea1", {isRequired:false, minChars:0});
+//-->
+</script>
+</body>
+</html>

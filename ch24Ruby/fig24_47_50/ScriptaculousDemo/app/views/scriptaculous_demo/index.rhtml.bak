@@ -1,0 +1,11 @@
+<!-- Fig. 24.50: app/views/scriptaculous_demo/index.rhtml -->
+<!-- Default view for Script.aculo.us demo. -->
+<div id = "link">
+   <%= link_to_remote 'Shrink', :url => {:action => 'playEffect', :effect_index => 0},
+      :update => "link", :before => visual_effect(:Shrink, 'image',
+      :duration => 1.0, :queue => 'end') %>
+</div>
+
+<div id = "image" style = "width: 244px; height: 320px;">
+   <%= image_tag "jhtp7medium.jpg" %>
+</div>

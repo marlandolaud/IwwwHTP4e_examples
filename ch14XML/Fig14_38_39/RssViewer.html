@@ -1,0 +1,131 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 14.38: RssViewer.html -->
+<!-- Simple RSS viewer. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+   <title>Simple RSS Viewer</title>
+   <style type = "text/css">
+      #outputDiv { font: 12px Verdana, Geneva, Arial, 
+                   Helvetica, sans-serif; }
+   </style>
+   <script type = "text/javascript">
+   <!--
+   var browser = ""; // used to determine which browser is being used
+
+   // is the browser Internet Explorer 7 or Firefox 2?
+   if ( window.ActiveXObject ) // IE7
+      browser = "IE7"; 
+   else if ( document.implementation && 
+      document.implementation.createDocument ) // FF2 and other browsers
+      browser = "FF2"; 
+
+   // load both the RSS feed and the XSL file to process it
+   function start()
+   {
+      if ( browser == "IE7" )
+      {
+         var xsl = loadXMLDocument( 'rss.xsl' ); // load XSL file
+         var rss = loadXMLDocument( 'deitel-20.xml' ); // load RSS feed
+         var result = applyTransform( rss, xsl ); // apply transform
+         displayTransformedRss( result ); // display feed info
+      } // end if
+      else if ( browser == "FF2" )
+      {
+         var xsl = loadXMLDocument( 'rss.xsl' ); // load XSL file
+         xsl.onload = function() // function to execute when xsl loads
+         {
+            var rss = loadXMLDocument( 'deitel-20.xml' ); // load RSS feed
+            rss.onload = function() // function to execute when rss loads
+            {
+               var result = applyTransform( rss, xsl ); // apply transform
+               displayTransformedRss( result ); // display feed info
+            } // end onload event handler for rss
+         } // end onload event handler for xsl
+      } // end else
+   } // end function start
+
+   // load XML document based on whether the browser is IE7 or Firefox 2
+   function loadXMLDocument( url )
+   {
+      var doc = ""; // variable to manage loading file
+
+      if ( browser == "IE7" ) // IE7
+      {
+         // create IE7-specific XML document object
+         doc = new ActiveXObject( "Msxml2.DOMDocument.6.0" );
+         doc.async = false; // specifies synchronous loading of XML doc
+         doc.load( url ); // load the XML document specified by url
+      } // end if
+      else if ( browser == "FF2" ) // other browsers
+      {
+         // create XML document object
+         doc = document.implementation.createDocument( "", "", null );
+         doc.load( url ); // load the XML document specified by url
+      } // end else
+      else // not supported
+         alert( 'This script is not supported by your browser' );
+
+      return doc; // return the loaded document
+   } // end function loadXMLDocument
+
+   // apply XSL transformation and show results
+   function applyTransform( rssDocument, xslDocument )
+   {
+      var result; // stores transformed RSS
+
+      // transform the RSS feed to XHTML
+      if ( browser == "IE7" )
+         result = rssDocument.transformNode( xslDocument ); 
+      else // browser == "FF2"
+      {
+         // create Firefox object to perform transformation
+         var xsltProcessor = new XSLTProcessor(); 
+
+         // specify XSL stylesheet to use in transformation
+         xsltProcessor.importStylesheet( xslDocument );
+         
+         // apply the transformation
+         result = 
+            xsltProcessor.transformToFragment( rssDocument, document );
+      } // end else
+
+      return result; // return the transformed RSS
+   } // end function applyTransform
+
+   // display the XML document and highlight the first child
+   function displayTransformedRss( resultXHTML )
+   {
+      if ( browser == "IE7" )
+         document.getElementById( "outputDiv" ).innerHTML = resultXHTML;
+      else // browser == "FF2"
+         document.getElementById( "outputDiv" ).appendChild( 
+            resultXHTML );    
+   } // end function displayTransformedRss
+   // -->
+   </script>
+</head>
+<body id = "body" onload = "start();">
+   <div id = "outputDiv"></div>
+</body>
+</html>
+
+
+<!-- 
+ ************************************************************************** 
+ * (C) Copyright 1992-2008 by Deitel & Associates, Inc. and               *
+ * Pearson Education, Inc. All Rights Reserved.                           *
+ *                                                                        *
+ * DISCLAIMER: The authors and publisher of this book have used their     *
+ * best efforts in preparing the book. These efforts include the          *
+ * development, research, and testing of the theories and programs        *
+ * to determine their effectiveness. The authors and publisher make       *
+ * no warranty of any kind, expressed or implied, with regard to these    *
+ * programs or to the documentation contained in these books. The authors *
+ * and publisher shall not be liable in any event for incidental or       *
+ * consequential damages in connection with, or arising out of, the       *
+ * furnishing, performance, or use of these programs.                     *
+ **************************************************************************
+-->

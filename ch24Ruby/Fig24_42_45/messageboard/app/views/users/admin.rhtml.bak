@@ -1,0 +1,11 @@
+<!-- Fig. 24.26: app/views/users/admin.rhtml -->
+<!-- Login form used to send data to the user controller. -->
+<h1>Please Log In</h1>
+<% form_tag :action => 'validate' do %> <!-- create form tag -->
+   <p><label for="user_name">Name</label><br/>
+   <%= text_field 'user', 'name'  %></p> <!-- create input tag -->
+   
+   <p><label for="user_password">Password</label><br/>
+   <%= password_field 'user', 'password'  %></p> <!-- create input tag -->
+   <%= submit_tag "Sign In" %> <!-- create submit tag -->
+<% end %> <!-- create an end form tag -->

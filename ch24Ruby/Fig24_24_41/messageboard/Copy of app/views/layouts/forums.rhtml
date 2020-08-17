@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 24.38: app/views/layouts/forums.rhtml -->
+<!-- Layout that displays the logged in user for every Forums action. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+   <title>Forums: <%= controller.action_name %></title>
+   <%= stylesheet_link_tag 'scaffold' %> <!-- link to a stylesheet -->
+</head>
+<body>
+   <div style = "text-align: right">
+      <% if ( session[ :user ] ) then %> <!-- if user is logged on -->
+         <!-- code to display if user is logged on -->
+         <%= "Logged In As #{ session[ :user ].name }: " %>
+         <%= link_to 'Log Out', 
+            :controller => 'users', :action => 'logout' %>
+      <% else %> <!-- user is not logged on -->
+         <!-- code to display if user is not logged on -->
+         <%= "Not Currently Logged In:" %>
+         <%= link_to 'Log In', 
+            :controller => 'users', :action => 'admin' %>
+      <% end %> <!-- end if -->
+   </div>
+   <p style="color: green"><%= flash[:notice] %></p>
+   <p style="color: red"><%= flash[:error] %></p>
+
+   <%= yield %> <!-- displays template -->
+</body>
+</html>

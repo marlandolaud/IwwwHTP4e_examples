@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Web Developer Express 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/FlagRotator/", "http://localhost/FlagRotator", "{990A1EC6-D221-476B-A993-F20E8CB0634C}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/FlagRotator"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\FlagRotator\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\FlagRotator\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/FlagRotator"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\FlagRotator\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\FlagRotator\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\..\..\inetpub\wwwroot\FlagRotator\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{990A1EC6-D221-476B-A993-F20E8CB0634C}.Debug|.NET.ActiveCfg = Debug|.NET
+		{990A1EC6-D221-476B-A993-F20E8CB0634C}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

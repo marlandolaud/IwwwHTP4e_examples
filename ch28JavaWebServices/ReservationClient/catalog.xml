@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/Reservation/ReservationService?WSDL" uri="src/conf/xml-resources/web-service-references/ReservationService/wsdl/localhost_8080/Reservation/ReservationService.wsdl"/>
+    <system systemId="http://pjd:8080/Reservation/ReservationService/__container$publishing$subctx/WEB-INF/wsdl/ReservationService_schema1.xsd" uri="src/conf/xml-resources/web-service-references/ReservationService/wsdl/pjd_8080/Reservation/ReservationService/__container_publishing_subctx/WEB-INF/wsdl/ReservationService_schema1.xsd"/>
+</catalog>

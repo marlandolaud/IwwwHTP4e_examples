@@ -1,0 +1,101 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 15.5: SwitchContent.html -->
+<!-- Asynchronously display content without reloading the page. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+   <style type="text/css">
+      .box { border: 1px solid black;
+             padding: 10px }
+   </style>
+   <title>Switch Content Asynchronously</title>
+   <script type = "text/javascript" language = "JavaScript">
+      <!--
+      var asyncRequest; // variable to hold XMLHttpRequest object
+
+      // set up and send the asynchronous request.
+      function getContent( url )
+      {
+         // attempt to create the XMLHttpRequest and make the request
+         try
+         {
+            asyncRequest = new XMLHttpRequest(); // create request object
+
+            // register event handler
+            asyncRequest.onreadystatechange = stateChange; 
+            asyncRequest.open( 'GET', url, true ); // prepare the request
+            asyncRequest.send( null ); // send the request
+         } // end try
+         catch ( exception )
+         {
+            alert( 'Request failed.' );
+         } // end catch
+      } // end function getContent
+      
+      // displays the response data on the page
+      function stateChange()
+      {
+         if ( asyncRequest.readyState == 4 && asyncRequest.status == 200 )
+         {
+            document.getElementById( 'contentArea' ).innerHTML = 
+               asyncRequest.responseText; // places text in contentArea
+         } // end if
+      } // end function stateChange
+
+      // clear the content of the box
+      function clearContent()
+      {
+         document.getElementById( 'contentArea' ).innerHTML = '';
+      } // end function clearContent
+      // -->
+   </script>
+</head>
+<body>
+   <h1>Mouse over a book for more information.</h1>
+   <img src = 
+      "http://www.deitel.com/examples/iw3htp4/ajax/thumbs/cpphtp6.jpg" 
+      onmouseover = 'getContent( "cpphtp6.html" )'
+      onmouseout = 'clearContent()'/>
+   <img src = 
+      "http://www.deitel.com/examples/iw3htp4/ajax/thumbs/iw3htp4.jpg" 
+      onmouseover = 'getContent( "iw3htp4.html" )'
+      onmouseout = 'clearContent()'/>
+   <img src = 
+      "http://www.deitel.com/examples/iw3htp4/ajax/thumbs/jhtp7.jpg" 
+      onmouseover = 'getContent( "jhtp7.html" )'
+      onmouseout = 'clearContent()'/>
+   <img src = 
+      "http://www.deitel.com/examples/iw3htp4/ajax/thumbs/vbhtp3.jpg" 
+      onmouseover = 'getContent( "vbhtp3.html" )'
+      onmouseout = 'clearContent()'/>
+   <img src = 
+      "http://www.deitel.com/examples/iw3htp4/ajax/thumbs/vcsharphtp2.jpg" 
+      onmouseover = 'getContent( "vcsharphtp2.html" )'
+      onmouseout = 'clearContent()'/>
+   <img src = 
+      "http://www.deitel.com/examples/iw3htp4/ajax/thumbs/chtp5.jpg" 
+      onmouseover = 'getContent( "chtp5.html" )'
+      onmouseout = 'clearContent()'/>
+   <div class = "box" id = "contentArea">&nbsp;</div>
+</body>
+</html>
+
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2008 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

@@ -1,0 +1,152 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 11.16: final.html -->
+<!-- Rich welcome page using several JavaScript concepts. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head> 
+      <title>Putting It All Together</title>
+      <script type = "text/javascript">
+         <!--
+         var now = new Date(); // current date and time
+         var hour = now.getHours(); // current hour
+
+         // array with names of the images that will be randomly selected
+         var pictures = 
+            [ "CPE", "EPT", "GPP", "GUI", "PERF", "PORT", "SEO" ];
+
+         // array with the quotes that will be randomly selected
+         var quotes = [ "Form ever follows function.<br/>" +
+            " Louis Henri Sullivan", "E pluribus unum." +
+            " (One composed of many.) <br/> Virgil", "Is it a" +
+            " world to hide virtues in?<br/> William Shakespeare" ];
+
+         // write the current date and time to the web page
+         document.write( "<p>" + now.toLocaleString() + "<br/></p>" );
+
+         // determine whether it is morning
+         if ( hour < 12 )
+            document.write( "<h2>Good Morning, " );
+         else
+         {
+            hour = hour - 12; // convert from 24-hour clock to PM time
+
+            // determine whether it is afternoon or evening
+            if ( hour < 6 )
+               document.write( "<h2>Good Afternoon, " );
+            else
+               document.write( "<h2>Good Evening, " );
+         } // end else
+
+         // determine whether there is a cookie
+         if ( document.cookie )
+         {
+            // convert escape characters in the cookie string to their
+            // English notation
+            var myCookie = unescape( document.cookie );
+
+            // split the cookie into tokens using = as delimiter
+            var cookieTokens = myCookie.split( "=" );
+
+            // set name to the part of the cookie that follows the = sign
+            name = cookieTokens[ 1 ];
+         } // end if
+         else
+         {
+            // if there was no cookie, ask the user to input a name
+            name = window.prompt( "Please enter your name", "Paul" );
+
+            // escape special characters in the name string 
+            // and add name to the cookie
+            document.cookie = "name =" + escape( name );
+         } // end else
+
+         // write the greeting to the page
+         document.writeln(
+            name + ", welcome to JavaScript programming!</h2>" );
+
+         // write the link for deleting the cookie to the page
+         document.writeln( "<a href = \"javascript:wrongPerson()\">" +
+            "Click here if you are not " + name + "</a><br/>" );
+
+         // write the random image to the page
+         document.write ( "<img src = \"" +
+            pictures[ Math.floor( Math.random() * 7 ) ] +
+            ".gif\" /> <br/>" );
+
+         // write the random quote to the page
+         document.write ( quotes[ Math.floor( Math.random() * 3 ) ] );
+
+         // create a window with all the quotes in it
+         function allQuotes()
+         {
+            // create the child window for the quotes
+            var quoteWindow = window.open( "", "", "resizable=yes, " +
+               "toolbar=no, menubar=no, status=no, location=no," +
+               " scrollBars=yes" );
+            quoteWindow.document.write( "<p>" )
+
+            // loop through all quotes and write them in the new window
+            for ( var i = 0; i < quotes.length; i++ )                  
+               quoteWindow.document.write( ( i + 1 ) + ".) " +         
+                  quotes[ i ] + "<br/><br/>");                         
+
+            // write a close link to the new window
+            quoteWindow.document.write( "</p><br/><a href = " + 
+               "\"javascript:window.close()\"> Close this window </a>" )
+         } // end function allQuotes
+
+         // reset the document's cookie if wrong person
+         function wrongPerson()
+         {
+            // reset the cookie 
+            document.cookie= "name=null;" +
+               " expires=Thu, 01-Jan-95 00:00:01 GMT";
+
+            // reload the page to get a new name after removing the cookie
+            location.reload();
+         } // end function wrongPerson
+
+         // open a new window with the quiz2.html file in it
+         function openQuiz()
+         {
+            window.open( "quiz2.html", "", "toolbar = no, " + 
+               "menubar = no, scrollBars = no" ); 
+         } // end function openQuiz
+      // -->
+      </script>
+   </head>
+   <body>
+      <p><a href = "javascript:allQuotes()">View all quotes</a></p>
+
+      <p id = "quizSpot">                                              
+         <a href = "javascript:openQuiz()">Please take our quiz</a></p>
+
+      <script type = "text/javascript">
+         // variable that gets the last modification date and time
+         var modDate = new Date( document.lastModified );
+
+         // write the last modified date and time to the page
+         document.write ( "This page was last modified " +
+            modDate.toLocaleString() );
+      </script>
+   </body>
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2008 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Web Developer Express 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/Cookies/", "http://localhost/Cookies", "{D0BE88ED-7038-4DF7-98A1-EB2CAF363D0C}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/Cookies"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\Cookies\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Cookies\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Cookies"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\Cookies\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Cookies\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\..\..\inetpub\wwwroot\Cookies\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0BE88ED-7038-4DF7-98A1-EB2CAF363D0C}.Debug|.NET.ActiveCfg = Debug|.NET
+		{D0BE88ED-7038-4DF7-98A1-EB2CAF363D0C}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

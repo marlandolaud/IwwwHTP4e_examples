@@ -1,0 +1,128 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 15.8: PullImagesOntoPage.html -->
+<!-- Image catalog that uses Ajax to request XML data asynchronously. -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+<title> Pulling Images onto the Page </title>
+<style type = "text/css">
+   td { padding: 4px }
+   img { border: 1px solid black }
+</style>
+<script type = "text/javascript" language = "Javascript">
+   var asyncRequest; // variable to hold XMLHttpRequest object
+
+   // set up and send the asynchronous request to the XML file
+   function getImages( url )
+   {
+      // attempt to create the XMLHttpRequest and make the request
+      try
+      {
+         asyncRequest = new XMLHttpRequest(); // create request object
+
+         // register event handler
+         asyncRequest.onreadystatechange = processResponse; 
+         asyncRequest.open( 'GET', url, true ); // prepare the request
+         asyncRequest.send( null ); // send the request
+      } // end try
+      catch ( exception )
+      {
+         alert( 'Request Failed' );
+      } // end catch
+   } // end function getImages
+   
+   // parses the XML response; dynamically creates a table using DOM and 
+   // populates it with the response data; displays the table on the page
+   function processResponse()
+   {
+      // if request completed successfully and responseXML is non-null
+      if ( asyncRequest.readyState == 4 && asyncRequest.status == 200 && 
+         asyncRequest.responseXML )
+      {
+         clearTable(); // prepare to display a new set of images
+
+         // get the covers from the responseXML
+         var covers = asyncRequest.responseXML.getElementsByTagName(
+            "cover" )
+
+         // get base URL for the images
+         var baseUrl = asyncRequest.responseXML.getElementsByTagName( 
+            "baseurl" ).item( 0 ).firstChild.nodeValue;
+         
+         // get the placeholder div element named covers
+         var output = document.getElementById( "covers" );
+         
+         // create a table to display the images
+         var imageTable = document.createElement( 'table' );
+         
+         // create the table's body
+         var tableBody = document.createElement( 'tbody' );
+         
+         var rowCount = 0; // tracks number of images in current row
+         var imageRow = document.createElement( "tr" ); // create row
+         
+         // place images in row
+         for ( var i = 0; i < covers.length; i++ )
+         {
+            var cover = covers.item( i ); // get a cover from covers array
+         
+            // get the image filename
+            var image = cover.getElementsByTagName( "image" ).
+               item( 0 ).firstChild.nodeValue;
+         
+            // create table cell and img element to display the image
+            var imageCell = document.createElement( "td" );
+            var imageTag = document.createElement( "img" );
+            
+            // set img element's src attribute
+            imageTag.setAttribute( "src", baseUrl + escape( image ) ); 
+            imageCell.appendChild( imageTag ); // place img in cell
+            imageRow.appendChild( imageCell ); // place cell in row
+            rowCount++; // increment number of images in row
+
+            // if there are 6 images in the row, append the row to 
+            // table and start a new row
+            if ( rowCount == 6 && i + 1 < covers.length )
+            {
+               tableBody.appendChild( imageRow );
+               imageRow = document.createElement( "tr" );
+               rowCount = 0;
+            } // end if statement
+         } // end for statement
+
+         tableBody.appendChild( imageRow ); // append row to table body
+         imageTable.appendChild( tableBody ); // append body to table
+         output.appendChild( imageTable ); // append table to covers div
+      } // end if 
+   } // end function processResponse
+
+   // deletes the data in the table.
+   function clearTable()
+   {
+      document.getElementById( "covers" ).innerHTML = ''; 
+   }// end function clearTable
+   </script>
+</head>
+<body>
+   <input type = "radio" checked = "unchecked" name ="Books" value = "all" 
+      onclick = 'getImages( "all.xml" )'/> All Books 
+   <input type = "radio" checked = "unchecked"
+      name = "Books" value = "simply" 
+      onclick = 'getImages( "simply.xml" )'/>  Simply Books 
+   <input type = "radio" checked = "unchecked" 
+      name = "Books" value = "howto"
+      onclick = 'getImages( "howto.xml" )'/> How to Program Books 
+   <input type = "radio" checked = "unchecked"
+      name = "Books" value = "dotnet"
+      onclick = 'getImages( "dotnet.xml" )'/> .NET Books 
+   <input type = "radio" checked = "unchecked" 
+      name = "Books" value = "javaccpp"
+      onclick = 'getImages( "javaccpp.xml" )'/> Java, C, C++ Books 
+   <input type = "radio" checked = "checked" name = "Books" value = "none"
+      onclick = 'clearTable()'/> None 
+   <br/>
+   <div id = "covers"></div>
+</body>
+</html>

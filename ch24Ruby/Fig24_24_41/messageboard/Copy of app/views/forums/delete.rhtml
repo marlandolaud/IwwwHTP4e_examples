@@ -1,0 +1,11 @@
+<!-- Fig. 24.37: app/views/forums/delete.rhtml -->
+<!-- Template for delete action used to delete a Forum. -->
+<h1>Delete a Forum</h1><br />
+
+<% form_tag :action => :destroy %><!-- create from tag -->
+   <p><label for="forum_id">Forum Name</label><br />
+   <%= collection_select "forum", "id", @forums, "id", "name" %></p>
+   <%= submit_tag "Delete" %> <!-- create submit tag -->
+<% end %><!-- create end form tag -->
+
+<%= link_to 'Back', :action => 'list' %> <!-- link back to list method -->

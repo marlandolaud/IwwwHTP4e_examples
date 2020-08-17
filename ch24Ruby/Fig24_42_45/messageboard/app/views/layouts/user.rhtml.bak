@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- Fig. 24.28: app/views/layouts/user.rhtml-->
+<!-- Display the logged-in user for every action of the 
+     user controller -->
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+   <title>Users: <%= controller.action_name %></title>
+</head>
+<body>
+   <%= yield %>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Web Developer Express 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/Guestbook/", "http://localhost/Guestbook", "{5225C045-D089-4E6A-BE4E-6C21CA2562D6}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/Guestbook"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\Guestbook\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Guestbook\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Guestbook"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\inetpub\wwwroot\Guestbook\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Guestbook\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\..\..\inetpub\wwwroot\Guestbook\"
+		DefaultWebSiteLanguage = "Visual Basic"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5225C045-D089-4E6A-BE4E-6C21CA2562D6}.Debug|.NET.ActiveCfg = Debug|.NET
+		{5225C045-D089-4E6A-BE4E-6C21CA2562D6}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
